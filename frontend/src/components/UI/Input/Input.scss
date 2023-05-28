@@ -1,0 +1,21 @@
+.input {
+  width: 25rem;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: 0.13rem solid black;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:focus {
+    border: 0.13rem solid rgb(63, 44, 168);
+    outline: none;
+  }
+  &:focus ~ &::placeholder {
+    transform: translateY(-9px);
+  }
+
+  &::placeholder {
+    color: #b3afaf;
+    text-transform: capitalize;
+  }
+}
