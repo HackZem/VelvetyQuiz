@@ -1,0 +1,17 @@
+.Question {
+  display: inline-block;
+  text-align: center;
+  background: #4472c4;
+  width: 80%;
+  max-height: 150px;
+  color: #fff;
+  border-radius: 15px;
+  border: 2px solid #000;
+  padding: 10px;
+
+  label {
+    word-wrap: break-word;
+    hyphens: auto;
+    font-size: 30px;
+  }
+}

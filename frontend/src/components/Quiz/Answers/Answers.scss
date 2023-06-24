@@ -1,0 +1,14 @@
+.Answers {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0;
+  gap: 1.5rem 4rem;
+
+  @media screen and (max-width: 1174px) {
+    overflow: scroll;
+  }
+}
