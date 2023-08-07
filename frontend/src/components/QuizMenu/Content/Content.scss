@@ -1,0 +1,45 @@
+.QuizMenu-content {
+  max-width: 50rem;
+  flex-grow: 1;
+
+  h1 {
+    font-weight: 400;
+    font-size: 3rem;
+  }
+  p {
+    font-size: 1.6rem;
+    margin-top: 4rem;
+    color: #404040;
+  }
+
+  .QuizMenu-content-control {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+
+    button {
+      width: 15rem;
+      height: 15rem;
+      background: #4472c4;
+      border: 1px solid #2f528f;
+      color: #fff;
+      font-size: 1.5rem;
+
+      &:hover {
+        background: #153f88;
+        border: none;
+      }
+
+      &:disabled,
+      button[disabled] {
+        background: #aca8a8;
+        color: #c9cdcf;
+
+        &:hover {
+          background: #aca8a8;
+          border: 1px solid #2f528f;
+        }
+      }
+    }
+  }
+}

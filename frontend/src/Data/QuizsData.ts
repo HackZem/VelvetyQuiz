@@ -1,4 +1,19 @@
 type TStatus = "public" | "privat" | "nocopy";
+export type TDataAnswers = {
+  text: string;
+  isCorrect: boolean;
+  id: string;
+}[];
+
+type TTypeAnswer = "radio" | "box";
+
+export interface IQuestions {
+  text: string;
+  scores: number;
+  type: TTypeAnswer;
+  answers: TDataAnswers;
+  id: string;
+}
 
 interface IQuizData {
   name: string;
@@ -8,14 +23,9 @@ interface IQuizData {
   subject: string;
   status: TStatus;
   completed: number;
+  id: string;
 
-  questions: {
-    question: string;
-    answers: {
-      label: string;
-      isCorrect: boolean;
-    }[];
-  }[];
+  questions: IQuestions[];
 }
 
 const data: IQuizData[] = [
@@ -28,39 +38,46 @@ const data: IQuizData[] = [
     subject: "Тест",
     status: "public",
     completed: 10,
+    id: "0",
 
     questions: [
       {
-        question: "Скільки потрибно людині води в день?",
+        text: "Скільки потрибно людині води в день?",
+        scores: 5,
+        type: "radio",
         answers: [
-          { label: "10л", isCorrect: false },
-          { label: "2л", isCorrect: true },
-          { label: "1л", isCorrect: false },
-          { label: "0.5л", isCorrect: false },
+          { text: "10л", isCorrect: false, id: "0" },
+          { text: "2л", isCorrect: true, id: "1" },
+          { text: "1л", isCorrect: false, id: "2" },
+          { text: "0.5л", isCorrect: false, id: "3" },
         ],
+        id: "0",
       },
       {
-        question: "Хто такий програмист",
+        text: "Хто такий програмист",
+        scores: 5,
+        type: "radio",
         answers: [
-          { label: "Бездельник", isCorrect: false },
-          { label: "Мазахист", isCorrect: false },
-          { label: "Програма", isCorrect: false },
-          { label: "Лутчий", isCorrect: true },
+          { text: "Бездельник", isCorrect: false, id: "0" },
+          { text: "Мазахист", isCorrect: false, id: "1" },
+          { text: "Програма", isCorrect: false, id: "2" },
+          { text: "Лутчий", isCorrect: true, id: "3" },
         ],
+        id: "1",
       },
       {
-        question: "Назва лутчого сайту тестів",
+        text: "Назва лутчого сайту тестів",
+        scores: 5,
+        type: "radio",
         answers: [
-          { label: "наурок", isCorrect: false },
-          { label: "всесвітка", isCorrect: false },
-          { label: "бархатний quiz", isCorrect: true },
-          { label: "леший", isCorrect: false },
+          { text: "наурок", isCorrect: false, id: "0" },
+          { text: "всесвітка", isCorrect: false, id: "1" },
+          { text: "бархатний quiz", isCorrect: true, id: "2" },
         ],
+        id: "2",
       },
     ],
   },
 ];
 
 export default data;
-
-// git commit -m "updates QuizStart, Quiz(layout), add Data - QuizsData"

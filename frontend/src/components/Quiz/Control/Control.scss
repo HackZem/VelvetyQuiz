@@ -1,0 +1,39 @@
+.Quiz-control {
+  margin-top: auto;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5%;
+
+  .Quiz-control_btn {
+    background: rgb(47, 85, 151);
+    border: 1px solid #000;
+    color: #fff;
+    border-radius: 10px;
+    flex-grow: 2;
+    min-height: 2.5rem;
+    font-size: 1.3rem;
+    &.disabled {
+      background: rgba(59, 97, 163, 0.623);
+      color: rgba(255, 255, 255, 0.623);
+      pointer-events: none;
+      &:hover {
+        background: rgba(59, 97, 163, 0.623);
+      }
+    }
+
+    &:hover {
+      background: #153f88;
+    }
+  }
+
+  .Quiz-control_bar {
+    border: 1px solid #000;
+    min-height: 2.5rem;
+    flex-grow: 10;
+    height: 2rem;
+    background: #a9d18e;
+    border-radius: 10px;
+  }
+}

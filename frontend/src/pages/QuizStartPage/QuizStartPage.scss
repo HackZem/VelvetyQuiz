@@ -1,0 +1,30 @@
+.QuizStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 90vh;
+
+  label {
+    font-size: 7rem;
+    letter-spacing: 5px;
+  }
+
+  .QuizStart-input {
+    margin-top: 2rem;
+    width: 40rem;
+    height: 3rem;
+    font-size: 1.3rem;
+  }
+
+  .QuizStart-button {
+    width: 15rem;
+    height: 3rem;
+    border-radius: 30px;
+    font-size: 1.5rem;
+    border: none;
+    margin-top: 2rem;
+    text-align: center;
+  }
+}

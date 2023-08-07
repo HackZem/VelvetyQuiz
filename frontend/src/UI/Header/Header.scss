@@ -1,0 +1,44 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  background: #000;
+  color: #fff;
+
+  .header-menu {
+    display: flex;
+    align-items: center;
+
+    .header-menu-logo {
+      img {
+        width: 2.5rem;
+        margin: 10px;
+      }
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      margin-left: 2rem;
+      font-size: 1.5rem;
+      align-items: center;
+
+      .header-nav__test {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .header-avatar {
+    img {
+      width: 3.7rem;
+      border-radius: 50%;
+      margin: 10px;
+    }
+  }
+}

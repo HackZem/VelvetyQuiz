@@ -1,0 +1,17 @@
+.EllipsePrecision {
+  // border-radius: 10rem;
+  // border: 25px solid #424f97;
+  // background: transparent;
+  // width: 18rem;
+  // height: 18rem;
+
+  .EllipsePrecision-circle {
+    transform-origin: center;
+    transform: rotate(126deg);
+  }
+
+  .EllipsePrecision-circleProgressBar {
+    transform-origin: center;
+    transform: rotate(126deg);
+  }
+}

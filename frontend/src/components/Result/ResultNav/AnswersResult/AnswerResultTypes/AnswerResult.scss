@@ -1,0 +1,34 @@
+.Container.AnswerResult {
+  width: 83rem !important;
+  height: max-content !important;
+  min-height: 16rem;
+  padding: 2.12rem 1.62rem !important;
+  display: flex;
+  flex-direction: column;
+
+  .AnswerResult-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    h3 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    .AnswerResult-head-time {
+      font-size: 1.25rem;
+
+      span {
+        color: #5a6ac4;
+        margin-right: 0.62rem;
+      }
+    }
+  }
+
+  hr {
+    width: 100%;
+    margin-top: 0.75rem;
+    margin-bottom: 2.31rem;
+  }
+}

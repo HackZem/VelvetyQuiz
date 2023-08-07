@@ -1,0 +1,15 @@
+.QuizMenu {
+  display: flex;
+  margin: 0 auto;
+  padding: 10px 20px;
+  max-width: 115rem;
+  justify-content: space-between;
+  position: relative;
+  gap: 1rem;
+  margin-top: 5rem;
+
+  .QuizMenu-exit {
+    position: absolute;
+    bottom: -9rem;
+  }
+}
