@@ -30,19 +30,19 @@ interface IQuizData {
 
 const data: IQuizData[] = [
   {
-    name: "Тест",
+    name: "Test",
     description:
-      "У характеристиці тесту визначено структуру тесту, час, відведений на його виконання, подано типи завдань, уміщених до тесту, наведено схему нарахування тестових балів та зазначено орієнтовний розподіл завдань відповідно до розділів / підрозділів Програми незалежного тестування",
-    author: "Анонім",
+      "The test characteristics define the structure of the test, the time allotted for its execution, the types of tasks included in the test, the scheme for calculating test points and the approximate distribution of tasks according to the sections / subsections of the Independent Testing Program are given.",
+    author: "Anonim",
     date: new Date("2022-03-25"),
-    subject: "Тест",
+    subject: "Test",
     status: "public",
     completed: 10,
     id: "0",
 
     questions: [
       {
-        text: "Скільки потрибно людині води в день?",
+        text: "How much water does a person need per day?",
         scores: 5,
         type: "radio",
         answers: [
@@ -54,25 +54,25 @@ const data: IQuizData[] = [
         id: "0",
       },
       {
-        text: "Хто такий програмист",
+        text: "Who is a programmer?",
         scores: 5,
         type: "radio",
         answers: [
-          { text: "Бездельник", isCorrect: false, id: "0" },
-          { text: "Мазахист", isCorrect: false, id: "1" },
-          { text: "Програма", isCorrect: false, id: "2" },
-          { text: "Лутчий", isCorrect: true, id: "3" },
+          { text: "1", isCorrect: false, id: "0" },
+          { text: "2", isCorrect: false, id: "1" },
+          { text: "3", isCorrect: false, id: "2" },
+          { text: "4", isCorrect: true, id: "3" },
         ],
         id: "1",
       },
       {
-        text: "Назва лутчого сайту тестів",
+        text: "The name of the test website",
         scores: 5,
         type: "radio",
         answers: [
-          { text: "наурок", isCorrect: false, id: "0" },
-          { text: "всесвітка", isCorrect: false, id: "1" },
-          { text: "бархатний quiz", isCorrect: true, id: "2" },
+          { text: "naurok", isCorrect: false, id: "0" },
+          { text: "vsesvita", isCorrect: false, id: "1" },
+          { text: "quiz", isCorrect: true, id: "2" },
         ],
         id: "2",
       },
