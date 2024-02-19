@@ -8,7 +8,7 @@ interface IRadioAnswerResult {
   label: string;
   selectedId: string;
   correctAnswer: string | undefined;
-  time?: Date;
+  time: number;
   numberLabel?: number;
 }
 
@@ -16,7 +16,7 @@ const RadioAnswerResult: FC<IRadioAnswerResult> = ({
   label,
   dataAnswers,
   selectedId,
-  time = new Date(),
+  time,
   numberLabel,
   correctAnswer = undefined,
 }) => {
@@ -28,7 +28,7 @@ const RadioAnswerResult: FC<IRadioAnswerResult> = ({
         </h3>
         <div className="AnswerResult-head-time">
           <span>Time:</span>
-          {time.getMilliseconds()}
+          {time}
         </div>
       </div>
       <hr />

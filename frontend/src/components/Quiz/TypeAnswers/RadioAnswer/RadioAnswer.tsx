@@ -5,21 +5,21 @@ import { IoMdRadioButtonOff, IoMdRadioButtonOn } from "react-icons/io";
 interface IRadioAnswerProps {
   children?: ReactNode;
   id: string;
-  selectedRadioAnswer: (id: string) => void;
+  selectedRadioAnswers: (id: string[]) => void;
   className?: string;
 }
 
 const RadioAnswer: FC<IRadioAnswerProps> = ({
   children,
   id,
-  selectedRadioAnswer,
+  selectedRadioAnswers,
   className,
 }) => {
   return (
     <div
       className={`RadioAnswer ${className}`}
       onClick={() => {
-        selectedRadioAnswer(id);
+        selectedRadioAnswers([id]);
       }}
     >
       <label>{children || "RadioAnswer"}</label>

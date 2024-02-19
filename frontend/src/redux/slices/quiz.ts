@@ -6,14 +6,17 @@ interface IQuizStateSlice {
   status: string;
   questions: IQuestions[];
   selectedAnswers: string[][];
+  questionTimes: number[];
 }
 
 const initialState: IQuizStateSlice = {
   currentQuestionNumber: 0,
   status: "loading",
-  questions: [...data[0].questions],
+  questions: [...data[1].questions],
 
   selectedAnswers: [],
+
+  questionTimes: [],
 };
 
 const quizSlice = createSlice({
@@ -32,8 +35,22 @@ const quizSlice = createSlice({
         currentQuestionNumber: state.currentQuestionNumber + 1,
       };
     },
+    addTime: (state, action: PayloadAction<number>) => {
+      return {
+        ...state,
+        questionTimes: [...state.questionTimes, action.payload],
+      };
+    },
+    reset: (state) => {
+      return {
+        ...state,
+        currentQuestionNumber: 0,
+        selectedAnswers: [],
+        questionTimes: [],
+      };
+    },
   },
 });
 
-export const { addAnswer, nextAnswer } = quizSlice.actions;
+export const { addAnswer, nextAnswer, reset, addTime } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;

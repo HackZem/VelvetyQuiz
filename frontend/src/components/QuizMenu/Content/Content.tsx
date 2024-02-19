@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import "./Content.scss";
 
 const Content = () => {
+  const navigate = useNavigate();
   return (
     <div className="QuizMenu-content">
       <div className="QuizMenu-content-texts">
@@ -13,7 +15,12 @@ const Content = () => {
         </p>
       </div>
       <div className="QuizMenu-content-control">
-        <button className="QuizMenu-content-control__start">Start Test</button>
+        <button
+          className="QuizMenu-content-control__start"
+          onClick={() => navigate("/quiz")}
+        >
+          Start Test
+        </button>
         <button className="QuizMenu-content-control__starthome" disabled={true}>
           Start Homework cooming soon...
         </button>

@@ -8,7 +8,7 @@ interface IBoxAnswerResult {
   dataAnswers: string[];
   label: string;
   selectedIds: string[];
-  time?: Date;
+  time: number;
   numberLabel?: number;
   correctAnswers?: string[];
 }
@@ -17,7 +17,7 @@ const BoxAnswerResult: FC<IBoxAnswerResult> = ({
   label,
   dataAnswers,
   selectedIds,
-  time = new Date(),
+  time,
   numberLabel,
   correctAnswers = undefined,
 }) => {
@@ -29,7 +29,7 @@ const BoxAnswerResult: FC<IBoxAnswerResult> = ({
         </h3>
         <div className="AnswerResult-head-time">
           <span>Time:</span>
-          {time.getDate()}
+          {time}
         </div>
       </div>
       <hr />

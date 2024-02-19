@@ -1,0 +1,46 @@
+.BoxAnswer {
+  background: #b4c7e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  color: #000;
+  font-size: 20px;
+  width: 550px;
+  max-height: 150px;
+  gap: 10px;
+
+  @media screen and (max-width: 1174px) {
+    width: 100%;
+    max-height: max-content;
+  }
+
+  label {
+    display: inline-block;
+    word-wrap: break-word;
+    overflow-y: scroll;
+    width: 95%;
+    max-height: 90%;
+    @media screen and (max-width: 1174px) {
+      width: 90%;
+      overflow-y: visible;
+      max-height: 100%;
+    }
+  }
+
+  .BoxAnswer-boxIcon {
+    z-index: 1;
+  }
+
+  &:hover {
+    background: #345da5;
+    color: white;
+  }
+
+  &.selected {
+    background: #153f88;
+    color: white;
+  }
+}

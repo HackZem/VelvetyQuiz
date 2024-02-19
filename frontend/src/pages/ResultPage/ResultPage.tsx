@@ -1,12 +1,34 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Button from "../../UI/Button/Button";
 import Container from "../../UI/Container/Container";
 import AnswersResult from "../../components/Result/ResultNav/AnswersResult/AnswersResult";
 import Info from "../../components/Result/ResultNav/Info/Info";
 import "./ResultPage.scss";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { TRootState } from "../../redux/store";
+import { getMaxScores, getScores } from "./helpers";
+import { useNavigate } from "react-router-dom";
+import _ from "lodash";
+import { reset } from "../../redux/slices/quiz";
 
 const ResultPage = () => {
   const [actionSelected, setActionSelected] = useState(0);
+
+  const navigate = useNavigate();
+
+  const selectedAnswers = useAppSelector(
+    (state: TRootState) => state.quiz.selectedAnswers
+  );
+
+  const questions = useAppSelector((state: TRootState) => state.quiz.questions);
+
+  const dispatch = useAppDispatch();
+
+  const points = useMemo(
+    () =>
+      (getScores(selectedAnswers, questions) / getMaxScores(questions)) * 12,
+    [selectedAnswers, questions]
+  );
 
   return (
     <div className="Result">
@@ -16,7 +38,7 @@ const ResultPage = () => {
           <div className="Result-head-info_questionsNumber">
             <Container>
               <div className="Result-head-info_questionsNumber-text">
-                <span>3</span>questions
+                <span>{questions.length}</span>questions
               </div>
             </Container>
           </div>
@@ -24,7 +46,11 @@ const ResultPage = () => {
             <span>Rating</span>
             <Container>
               <div className="Result-head-info_rating-text">
-                <span>6/12</span>score
+                <span>
+                  {_.round(points)}
+                  /12
+                </span>
+                points
               </div>
             </Container>
           </div>
@@ -32,7 +58,15 @@ const ResultPage = () => {
       </div>
       <div className="Result-transition">
         <div className="Result-transition-actions">
-          <Button className="Result-transition-actions-try">Try Again</Button>
+          <Button
+            className="Result-transition-actions-try"
+            onClick={() => {
+              navigate("/quiz");
+              dispatch(reset());
+            }}
+          >
+            Try Again
+          </Button>
           <nav>
             <Button
               className={`Result-transition-actions_answers ${
@@ -58,7 +92,7 @@ const ResultPage = () => {
         </div>
         <hr />
       </div>
-      {actionSelected ? <Info /> : <AnswersResult />}
+      {actionSelected ? <Info points={points} /> : <AnswersResult />}
     </div>
   );
 };

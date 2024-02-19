@@ -1,33 +1,50 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "./QuizPage.scss";
 import { TRootState } from "../../redux/store";
 import Answers from "../../components/Quiz/TypeAnswers/Answers";
 import QuizExitBtn from "../../UI/QuizExitBtn/QuizExitBtn";
 import Question from "../../components/Quiz/Question/Question";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { addAnswer, nextAnswer } from "../../redux/slices/quiz";
+import { addAnswer, addTime, nextAnswer } from "../../redux/slices/quiz";
 import Control from "../../components/Quiz/Control/Control";
 import { useNavigate } from "react-router-dom";
 
-type ISelectedAnswerId = string[] | null;
+type ISelectedAnswerId = string[];
 
 const QuizPage = () => {
   const { questions, currentQuestionNumber } = useAppSelector(
     (state: TRootState) => state.quiz
   );
-  const [selectedAnswerId, setSelectedAnswerId] =
-    useState<ISelectedAnswerId>(null);
 
-  const selectedAnswerHandler = (id: string) => {
-    setSelectedAnswerId([id]);
+  const [selectedAnswersId, setSelectedAnswersId] = useState<ISelectedAnswerId>(
+    []
+  );
+
+  let [currentTime, setCurrentTime] = useState<number>(0);
+
+  useEffect(() => {
+    updateTime();
+    return;
+  }, []);
+
+  const updateTime = () => {
+    const time = new Date().getTime();
+    setCurrentTime(time);
   };
 
   const onNext = () => {
-    dispatch(addAnswer(selectedAnswerId || [""]));
-    setSelectedAnswerId(null);
-    currentQuestionNumber !== questions.length - 1
-      ? dispatch(nextAnswer())
-      : navigate("/quiz/result");
+    dispatch(addAnswer(selectedAnswersId || [""]));
+    dispatch(addTime(new Date().getTime() - currentTime));
+
+    setSelectedAnswersId([]);
+
+    if (currentQuestionNumber !== questions.length - 1) {
+      dispatch(nextAnswer());
+      updateTime();
+    } else {
+      navigate("/quiz/result");
+      setCurrentTime(0);
+    }
   };
 
   const navigate = useNavigate();
@@ -36,7 +53,7 @@ const QuizPage = () => {
 
   const currentQuestion = useMemo(
     () => questions[currentQuestionNumber],
-    [currentQuestionNumber]
+    [currentQuestionNumber, questions]
   );
 
   return (
@@ -50,13 +67,13 @@ const QuizPage = () => {
         </div>
 
         <Answers
-          data={currentQuestion.answers}
-          selectedAnswerHandler={selectedAnswerHandler}
-          selectedAnswerId={selectedAnswerId}
+          data={currentQuestion}
+          selectedAnswers={setSelectedAnswersId}
+          selectedAnswersId={selectedAnswersId}
         />
         <Control
           onNext={onNext}
-          isDisabledBtn={selectedAnswerId ? false : true}
+          isDisabledBtn={selectedAnswersId.length > 0 ? false : true}
           isLast={currentQuestionNumber === questions.length - 1 ? true : false}
         />
       </div>
