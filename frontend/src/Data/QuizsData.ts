@@ -10,12 +10,12 @@ type TTypeAnswer = "radio" | "box";
 export interface IQuestions {
   text: string;
   scores: number;
-  type: TTypeAnswer;
+  questionType: TTypeAnswer;
   answers: TDataAnswers;
   id: string;
 }
 
-interface IQuizData {
+interface ITestData {
   name: string;
   description: string;
   author: string;
@@ -28,7 +28,7 @@ interface IQuizData {
   questions: IQuestions[];
 }
 
-const data: IQuizData[] = [
+const data: ITestData[] = [
   {
     name: "Test",
     description:
@@ -44,7 +44,7 @@ const data: IQuizData[] = [
       {
         text: "How much water does a person need per day?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "10л", isCorrect: false, id: "0" },
           { text: "2л", isCorrect: true, id: "1" },
@@ -56,7 +56,7 @@ const data: IQuizData[] = [
       {
         text: "Who is a programmer?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "1", isCorrect: false, id: "0" },
           { text: "2", isCorrect: false, id: "1" },
@@ -68,7 +68,7 @@ const data: IQuizData[] = [
       {
         text: "The name of the test website",
         scores: 5,
-        type: "box",
+        questionType: "box",
         answers: [
           { text: "naurok", isCorrect: false, id: "0" },
           { text: "vsesvita", isCorrect: true, id: "1" },
@@ -93,7 +93,7 @@ const data: IQuizData[] = [
       {
         text: "Назвіть дві відомі праці Вільяма Шекспіра.",
         scores: 7,
-        type: "box",
+        questionType: "box",
         answers: [
           { text: "Ромео і Джульєтта", isCorrect: true, id: "0" },
           { text: "Гордість і упередження", isCorrect: false, id: "2" },
@@ -105,7 +105,7 @@ const data: IQuizData[] = [
       {
         text: "Хто такий програміст?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Особа, яка готує їжу", isCorrect: false, id: "0" },
           { text: "Особа, яка пише романи", isCorrect: false, id: "1" },
@@ -117,7 +117,7 @@ const data: IQuizData[] = [
       {
         text: "Назвіть два гази, які становлять більшість атмосфери Землі.",
         scores: 8,
-        type: "box",
+        questionType: "box",
         answers: [
           { text: "Азот", isCorrect: true, id: "0" },
           { text: "Кисень", isCorrect: true, id: "1" },
@@ -129,7 +129,7 @@ const data: IQuizData[] = [
       {
         text: "Яка столиця Англії?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Париж", isCorrect: false, id: "0" },
           { text: "Лондон", isCorrect: true, id: "1" },
@@ -141,7 +141,7 @@ const data: IQuizData[] = [
       {
         text: "Яка найбільша планета у нашій сонячній системі?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Земля", isCorrect: false, id: "0" },
           { text: "Марс", isCorrect: false, id: "1" },
@@ -153,7 +153,7 @@ const data: IQuizData[] = [
       {
         text: "Який корінь квадратний з 81?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "7", isCorrect: false, id: "0" },
           { text: "8", isCorrect: false, id: "1" },
@@ -165,7 +165,7 @@ const data: IQuizData[] = [
       {
         text: "Який хімічний символ для золота?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Gd", isCorrect: false, id: "0" },
           { text: "Au", isCorrect: true, id: "1" },
@@ -177,7 +177,7 @@ const data: IQuizData[] = [
       {
         text: "Хто написав 'Ромео і Джульєтту'?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Чарльз Діккенс", isCorrect: false, id: "0" },
           { text: "Вільям Шекспір", isCorrect: true, id: "1" },
@@ -189,7 +189,7 @@ const data: IQuizData[] = [
       {
         text: "Яка валюта в Японії?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Долар", isCorrect: false, id: "0" },
           { text: "Євро", isCorrect: false, id: "1" },
@@ -201,7 +201,7 @@ const data: IQuizData[] = [
       {
         text: "Яка найвища гора в світі?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "К2", isCorrect: false, id: "0" },
           { text: "Еверест", isCorrect: true, id: "1" },
@@ -213,7 +213,7 @@ const data: IQuizData[] = [
       {
         text: "Яка найдовша річка в світі?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Амазонка", isCorrect: false, id: "0" },
           { text: "Ніл", isCorrect: true, id: "1" },
@@ -225,7 +225,7 @@ const data: IQuizData[] = [
       {
         text: "Хто відкрив закон тяжіння?",
         scores: 5,
-        type: "radio",
+        questionType: "radio",
         answers: [
           { text: "Альберт Ейнштейн", isCorrect: false, id: "0" },
           { text: "Ісаак Ньютон", isCorrect: true, id: "1" },

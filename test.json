@@ -1,0 +1,144 @@
+{
+  "name": "Test",
+  "description": "The test characteristics define the structure of the test, the time allotted for its execution, the types of tasks included in the test, the scheme for calculating test points and the approximate distribution of tasks according to the sections / subsections of the Independent Testing Program are given.",
+  "author": "HackZem",
+  "date": "2024-01-05",
+  "subject": "Just",
+  "status": "public",
+  "completed": 0,
+
+  "questions": [
+    {
+      "text": "Назвіть дві відомі праці Вільяма Шекспіра.",
+      "scores": 7,
+      "questionType": "box",
+      "answers": [
+        { "text": "Ромео і Джульєтта", "isCorrect": true },
+        { "text": "Гордість і упередження", "isCorrect": false },
+        { "text": "Гамлет", "isCorrect": true },
+        { "text": "Убити перепелятника", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Хто такий програміст?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Особа, яка готує їжу", "isCorrect": false },
+        { "text": "Особа, яка пише романи", "isCorrect": false },
+        { "text": "Особа, яка малює", "isCorrect": false },
+        { "text": "Особа, яка пише код", "isCorrect": true }
+      ]
+    },
+    {
+      "text": "Назвіть два гази, які становлять більшість атмосфери Землі.",
+      "scores": 8,
+      "questionType": "box",
+      "answers": [
+        { "text": "Азот", "isCorrect": true },
+        { "text": "Кисень", "isCorrect": true },
+        { "text": "Діоксид вуглецю", "isCorrect": false },
+        { "text": "Аргон", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Яка столиця Англії?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Париж", "isCorrect": false },
+        { "text": "Лондон", "isCorrect": true },
+        { "text": "Берлін", "isCorrect": false },
+        { "text": "Мадрид", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Яка найбільша планета у нашій сонячній системі?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Земля", "isCorrect": false },
+        { "text": "Марс", "isCorrect": false },
+        { "text": "Юпітер", "isCorrect": true },
+        { "text": "Венера", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Який корінь квадратний з 81?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "7", "isCorrect": false },
+        { "text": "8", "isCorrect": false },
+        { "text": "9", "isCorrect": true },
+        { "text": "10", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Який хімічний символ для золота?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Gd", "isCorrect": false },
+        { "text": "Au", "isCorrect": true },
+        { "text": "Ag", "isCorrect": false },
+        { "text": "Ga", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Хто написав 'Ромео і Джульєтту'?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Чарльз Діккенс", "isCorrect": false },
+        { "text": "Вільям Шекспір", "isCorrect": true },
+        { "text": "Марк Твен", "isCorrect": false },
+        { "text": "Джейн Остін", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Яка валюта в Японії?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Долар", "isCorrect": false },
+        { "text": "Євро", "isCorrect": false },
+        { "text": "Єна", "isCorrect": true },
+        { "text": "Фунт", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Яка найвища гора в світі?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "К2", "isCorrect": false },
+        { "text": "Еверест", "isCorrect": true },
+        { "text": "Кіліманджаро", "isCorrect": false },
+        { "text": "Фудзі", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Яка найдовша річка в світі?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Амазонка", "isCorrect": false },
+        { "text": "Ніл", "isCorrect": true },
+        { "text": "Янцзи", "isCorrect": false },
+        { "text": "Міссісіпі", "isCorrect": false }
+      ]
+    },
+    {
+      "text": "Хто відкрив закон тяжіння?",
+      "scores": 5,
+      "questionType": "radio",
+      "answers": [
+        { "text": "Альберт Ейнштейн", "isCorrect": false },
+        { "text": "Ісаак Ньютон", "isCorrect": true },
+        { "text": "Галілео Галілей", "isCorrect": false },
+        { "text": "Нікола Тесла", "isCorrect": false }
+      ]
+    }
+  ]
+}

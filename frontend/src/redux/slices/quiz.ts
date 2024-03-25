@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import data, { IQuestions } from "../../Data/QuizsData";
 
-interface IQuizStateSlice {
+interface ITestStateSlice {
   currentQuestionNumber: number;
   status: string;
   questions: IQuestions[];
@@ -9,7 +9,7 @@ interface IQuizStateSlice {
   questionTimes: number[];
 }
 
-const initialState: IQuizStateSlice = {
+const initialState: ITestStateSlice = {
   currentQuestionNumber: 0,
   status: "loading",
   questions: [...data[1].questions],
