@@ -15,7 +15,7 @@ const AnswersResult = () => {
       <div className="AnswersResult-filter"></div>
       <div className="AnswersResult-answers">
         {questions.map((item, index) => {
-          switch (item.type) {
+          switch (item.questionType) {
             case "radio":
               return (
                 <RadioAnswerResult

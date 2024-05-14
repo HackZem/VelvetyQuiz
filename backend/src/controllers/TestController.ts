@@ -41,7 +41,7 @@ export const addOne = async (req: IReq<ITest>, res: IRes) => {
 
     const doc = new TestModel(test);
 
-    const newTest = await doc.save();
+    await doc.save();
 
     res.json({ success: true });
   } catch (err) {

@@ -18,4 +18,8 @@ export class ApiError extends Error {
   static BadRequest(message: string, errors: string[] = []) {
     return new ApiError(HttpStatusCodes.BAD_REQUEST, message, errors);
   }
+
+  static NotFound(message: string) {
+    return new ApiError(HttpStatusCodes.NOT_FOUND, message);
+  }
 }

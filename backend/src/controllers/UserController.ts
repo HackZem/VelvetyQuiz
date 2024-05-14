@@ -1,4 +1,4 @@
-import HttpStatusCodes from "@src/constants/HttpStatusCodes";
+import { IUser } from "@src/models/UserModel";
 import { IReq, IRes } from "@src/routes/types/express/misc";
 import {
   activateLinkService,
@@ -6,16 +6,22 @@ import {
   loginService,
   logoutService,
   refreshService,
+  deleteOneService,
+  updateOneService,
 } from "@src/services/UserService";
 import { NextFunction } from "express";
 
-export const getMe = async (req: IReq, res: IRes, next: NextFunction) => {
-  res.send("hallo");
-  res.status(200);
+export const getMe = async (req: IReq | any, res: IRes, next: NextFunction) => {
+  res.status(200).json(req.user);
 };
 
-export const updateOne = async (req: IReq, res: IRes, next: any) => {
+export const updateOne = async (req: IReq<IUser>, res: IRes, next: any) => {
   try {
+    const user = req.body;
+
+    const id = req.params.id;
+
+    updateOneService(id, user);
   } catch (err) {
     next(err);
   }
@@ -23,6 +29,9 @@ export const updateOne = async (req: IReq, res: IRes, next: any) => {
 
 export const deleteOne = async (req: IReq, res: IRes, next: any) => {
   try {
+    const id = req.params.id;
+
+    deleteOneService(id);
   } catch (err) {
     next(err);
   }

@@ -1,6 +1,6 @@
 import cookieParser from "cookie-parser";
 
-import express, { NextFunction } from "express";
+import express from "express";
 
 import BaseRouter from "@src/routes/api";
 
@@ -10,6 +10,7 @@ import mongoose from "mongoose";
 
 import dotenv from "dotenv";
 import errorMiddleware from "./middlewares/errorMiddleware";
+import cors from "cors";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ mongoose
 const app = express();
 
 app.use(express.json());
+//app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(Paths.Base, BaseRouter);

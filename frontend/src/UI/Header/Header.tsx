@@ -1,27 +1,36 @@
 import { AiOutlineCaretDown } from "react-icons/ai";
 import "./Header.scss";
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
+  const [isLogin, setIsLogin] = useState<Boolean>(false);
+
   return (
     <header>
       <div className="header-menu">
-        <a className="header-menu-logo">
+        <Link className="header-menu-logo" to="/">
           <img src="/logo.png" alt="logo"></img>
-        </a>
+        </Link>
         <nav>
-          <div className="header-nav__test">
-            <a className="header-nav__test">Test</a>
-            <AiOutlineCaretDown size={18} />
-          </div>
-          <a className="header-nav__profile">Profile</a>
-          <a className="header-nav__aboutProject">AboutProject</a>
+          <a className="header-nav__item">All tests</a>
+          <a className="header-nav__item">My tests</a>
+          <Button className="header-nav__item">New test</Button>
         </nav>
       </div>
-      <div className="header-avatar">
-        <a>
-          <img src="/avatar.png" alt="avatar"></img>
-        </a>
-      </div>
+      {isLogin ? (
+        <div className="header-avatar">
+          <a>
+            <img src="/person-svgrepo-com.svg" alt="avatar"></img>
+          </a>
+        </div>
+      ) : (
+        <div className="header-auth">
+          <Button className="header-auth-login">Login</Button>
+          <Button className="header-auth-registration">Registration</Button>
+        </div>
+      )}
     </header>
   );
 };

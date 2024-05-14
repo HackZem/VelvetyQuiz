@@ -1,4 +1,4 @@
-import UserModel from "@src/models/UserModel";
+import UserModel, { IUser } from "@src/models/UserModel";
 import bcrypt from "bcrypt";
 import { v4 } from "uuid";
 import { sendActivationMail } from "./MailService";
@@ -115,4 +115,16 @@ export const refreshService = async (refreshToken: string) => {
   await saveToken(userAuthDto.id.toString(), tokens.refreshToken);
 
   return { ...tokens, user: userAuthDto };
+};
+
+export const deleteOneService = async (id: string) => {
+  const deletedUser = await UserModel.findByIdAndDelete(id);
+
+  if (!deletedUser) throw ApiError.NotFound("User not found");
+};
+
+export const updateOneService = async (id: string, user: IUser) => {
+  const updatedUser = await UserModel.updateOne({ _id: id }, user);
+
+  if (!updatedUser) throw ApiError.NotFound("User not found");
 };

@@ -18,7 +18,7 @@ const Answers: FC<IAnswersProps> = ({
 }) => {
   return (
     <ul className="Answers">
-      {data.type === "radio"
+      {data.questionType === "radio"
         ? data.answers.map((state) => {
             return (
               <RadioAnswer

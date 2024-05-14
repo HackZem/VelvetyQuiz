@@ -39,9 +39,8 @@ const TestSchema = new mongoose.Schema<ITest>(
     },
     description: String,
     author: {
-      // type: mongoose.Schema.Types.ObjectId,
-      // ref: "User",
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
     date: {

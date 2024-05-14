@@ -14,7 +14,7 @@ router.get(Paths.Tests.GetAll, getAll);
 
 router.get(Paths.Tests.GetOne, getOne);
 
-router.post(Paths.Tests.Add, addOne);
+router.post(Paths.Tests.Create, addOne);
 
 router.delete(Paths.Tests.Remove, removeOne);
 

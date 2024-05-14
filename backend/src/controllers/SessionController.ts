@@ -1,0 +1,65 @@
+import SessionModel, { ISession } from "@src/models/SessionModel";
+import { IReq, IRes } from "@src/routes/types/types";
+
+export const addOne = async (req: IReq<ISession>, res: IRes) => {
+  try {
+    const test = req.body;
+
+    const doc = new SessionModel(test);
+
+    await doc.save();
+
+    res.json({ success: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Failed to create session",
+    });
+  }
+};
+
+export const removeOne = async (req: IReq, res: IRes) => {
+  try {
+    const id = req.params.id;
+
+    const removedSession = await SessionModel.findByIdAndDelete(id);
+
+    if (!removedSession) {
+      res.status(404).json({
+        message: "Session not found",
+      });
+    }
+
+    res.json({ success: true });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Failed to remove session",
+    });
+  }
+};
+
+export const editOne = async (req: IReq<ISession>, res: IRes) => {
+  try {
+    const test = req.body;
+
+    const id = req.params.id;
+
+    const updatedSession = await SessionModel.updateOne({ _id: id }, test);
+
+    if (!updatedSession) {
+      res.status(404).json({
+        message: "Session not found",
+      });
+    }
+
+    res.json({
+      success: true,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Failed to update session",
+    });
+  }
+};

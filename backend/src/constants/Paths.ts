@@ -2,7 +2,7 @@ export default {
   Base: "/api",
   Users: {
     Base: "/users",
-    GetMe: "/:id",
+    GetMe: "/me",
     Update: "/:id",
     Delete: "/:id",
     Auth: {
@@ -17,7 +17,13 @@ export default {
     Base: "/tests",
     GetAll: "/",
     GetOne: "/:id",
-    Add: "/",
+    Create: "/",
+    Remove: "/:id",
+    Edit: "/:id",
+  },
+  Sessions: {
+    Base: "/sessions",
+    Create: "/",
     Remove: "/:id",
     Edit: "/:id",
   },

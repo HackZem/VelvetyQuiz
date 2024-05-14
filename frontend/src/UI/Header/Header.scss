@@ -14,31 +14,72 @@ header {
     align-items: center;
 
     .header-menu-logo {
+      display: flex;
+      justify-content: center;
+
       img {
-        width: 2.5rem;
-        margin: 10px;
+        font-family: "Azeret Mono";
+        width: 3.6875rem;
+        margin: 0.625rem;
       }
     }
 
     nav {
       display: flex;
-      gap: 2rem;
+      gap: 3rem;
       margin-left: 2rem;
       font-size: 1.5rem;
       align-items: center;
 
-      .header-nav__test {
-        display: flex;
-        align-items: center;
+      .header-nav__item {
+        &:last-child {
+          border-radius: 0%;
+        }
       }
     }
   }
 
   .header-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.25rem;
+    height: 4.25rem;
+    background: #b1b2b5;
+    border-radius: 50%;
+    margin: 6px;
+
     img {
-      width: 3.7rem;
+      width: 5.0625rem;
+      height: 5.0625rem;
       border-radius: 50%;
-      margin: 10px;
+    }
+  }
+
+  .header-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-right: 15px;
+
+    .button {
+      border-radius: 0%;
+    }
+
+    .header-auth-login {
+      background: #8faadc;
+      width: 7.125rem;
+
+      &:hover {
+        background: rgb(48, 68, 125);
+      }
+      &:active {
+        background: rgb(25, 39, 78);
+      }
+    }
+    .header-auth-registration {
+      width: 11.3125rem;
     }
   }
 }

@@ -10,11 +10,15 @@
 
 body {
   margin: 0;
-  font-family: "Lato", sans-serif;
-  font-weight: 500;
+  /* font-family: "Lato", sans-serif; */
+  font-family: "Roboto";
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgb(150, 168, 217);
+}
+:has(.modal) {
+  overflow: hidden;
 }
 
 code {

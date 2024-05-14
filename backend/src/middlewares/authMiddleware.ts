@@ -1,6 +1,5 @@
 import { IUserAuthDto } from "@src/dtos/userAuthDto";
 import { ApiError } from "@src/exceptions/ApiError";
-import { IUser } from "@src/models/UserModel";
 import { IReq, IRes } from "@src/routes/types/types";
 import { validateAccessToken } from "@src/services/TokenService";
 import { NextFunction } from "express";
