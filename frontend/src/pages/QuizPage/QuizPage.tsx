@@ -5,14 +5,19 @@ import Answers from "../../components/Quiz/TypeAnswers/Answers";
 import QuizExitBtn from "../../UI/QuizExitBtn/QuizExitBtn";
 import Question from "../../components/Quiz/Question/Question";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { addAnswer, addTime, nextAnswer } from "../../redux/slices/quiz";
+import {
+  addAnswer,
+  addTime,
+  fetchGetTest,
+  nextAnswer,
+} from "../../redux/slices/quiz";
 import Control from "../../components/Quiz/Control/Control";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type ISelectedAnswerId = string[];
 
 const QuizPage = () => {
-  const { questions, currentQuestionNumber } = useAppSelector(
+  const { questions, currentQuestionNumber, status } = useAppSelector(
     (state: TRootState) => state.quiz
   );
 
@@ -20,9 +25,16 @@ const QuizPage = () => {
     []
   );
 
+  const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
+
   let [currentTime, setCurrentTime] = useState<number>(0);
 
   useEffect(() => {
+    dispatch(fetchGetTest(id!));
     updateTime();
     return;
   }, []);
@@ -47,37 +59,37 @@ const QuizPage = () => {
     }
   };
 
-  const navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
-
   const currentQuestion = useMemo(
     () => questions[currentQuestionNumber],
     [currentQuestionNumber, questions]
   );
 
   return (
-    <div className="Quiz">
-      <div className="Quiz-body">
-        <div className="Quiz-header">
-          <Question>{currentQuestion.text}</Question>
-          <div className="Quiz-header-exit">
-            <QuizExitBtn />
+    status === "loaded" && (
+      <div className="Quiz">
+        <div className="Quiz-body">
+          <div className="Quiz-header">
+            <Question>{currentQuestion.text}</Question>
+            <div className="Quiz-header-exit">
+              <QuizExitBtn />
+            </div>
           </div>
-        </div>
 
-        <Answers
-          data={currentQuestion}
-          selectedAnswers={setSelectedAnswersId}
-          selectedAnswersId={selectedAnswersId}
-        />
-        <Control
-          onNext={onNext}
-          isDisabledBtn={selectedAnswersId.length > 0 ? false : true}
-          isLast={currentQuestionNumber === questions.length - 1 ? true : false}
-        />
+          <Answers
+            data={currentQuestion}
+            selectedAnswers={setSelectedAnswersId}
+            selectedAnswersId={selectedAnswersId}
+          />
+          <Control
+            onNext={onNext}
+            isDisabledBtn={selectedAnswersId.length > 0 ? false : true}
+            isLast={
+              currentQuestionNumber === questions.length - 1 ? true : false
+            }
+          />
+        </div>
       </div>
-    </div>
+    )
   );
 };
 

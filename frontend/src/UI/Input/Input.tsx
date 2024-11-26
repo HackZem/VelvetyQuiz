@@ -1,19 +1,24 @@
-import React, { FC, ReactNode } from "react";
+import React, { FC, InputHTMLAttributes } from "react";
 import "./Input.scss";
 
-interface IProps {
+interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   children?: string;
-  props?: HTMLInputElement;
   className?: string;
+  errorMessage?: string;
 }
 
-const Input: FC<IProps> = ({ children, className, ...props }) => {
+const Input: FC<IProps> = ({ children, className, errorMessage, ...rest }) => {
   return (
-    <input
-      {...props}
-      placeholder={children}
-      className={`input ${className}`}
-    ></input>
+    <>
+      <input
+        {...rest}
+        placeholder={children}
+        className={`input ${className}`}
+      ></input>
+      <span className="input_error">
+        {errorMessage ? `• ${errorMessage}` : ""}
+      </span>
+    </>
   );
 };
 

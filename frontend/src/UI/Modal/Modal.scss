@@ -1,22 +1,32 @@
-.modal {
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-wrapper {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   min-height: 100%;
-  z-index: 999;
-  background: rgba(0, 0, 0, 0.38);
   overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.625rem;
 
-  .modal-wrapper {
-    position: absolute;
+  .modal {
+    width: min-content;
+    z-index: 999;
+  }
+
+  .modal-overlay {
+    background: rgba(0, 0, 0, 0.38);
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     min-height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.625rem;
+    z-index: 1;
   }
 }

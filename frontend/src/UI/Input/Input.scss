@@ -5,6 +5,8 @@
   border: 0.13rem solid black;
   font-size: 1rem;
   transition: all 0.3s ease;
+  display: block;
+  margin-bottom: 0.5rem;
 
   &:focus {
     border: 0.13rem solid rgb(63, 44, 168);
@@ -18,4 +20,11 @@
     color: #b3afaf;
     text-transform: capitalize;
   }
+}
+
+.input_error {
+  color: red;
+  font-size: 1.2rem;
+  text-align: start;
+  display: block;
 }

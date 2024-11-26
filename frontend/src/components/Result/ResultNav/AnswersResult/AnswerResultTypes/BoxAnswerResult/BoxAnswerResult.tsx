@@ -3,23 +3,25 @@ import "../AnswerResult.scss";
 import Container from "../../../../../../UI/Container/Container";
 import { FC } from "react";
 import equalArrays from "../../../../../../helpers/equalArrays";
+import { IAnswer } from "../../../../../../models/responses/TestResponse";
+import _ from "lodash";
 
 interface IBoxAnswerResult {
-  dataAnswers: string[];
+  answers: IAnswer[];
   label: string;
   selectedIds: string[];
   time: number;
   numberLabel?: number;
-  correctAnswers?: string[];
+  correctAnswerIds?: string[];
 }
 
 const BoxAnswerResult: FC<IBoxAnswerResult> = ({
   label,
-  dataAnswers,
+  answers,
   selectedIds,
   time,
   numberLabel,
-  correctAnswers = undefined,
+  correctAnswerIds = undefined,
 }) => {
   return (
     <Container className="AnswerResult">
@@ -35,20 +37,20 @@ const BoxAnswerResult: FC<IBoxAnswerResult> = ({
       <hr />
 
       <div className="BoxAnswerResult-items">
-        {dataAnswers.map((itemMap, index) => {
+        {answers.map((item, index) => {
           return (
             <div
               className={`BoxAnswerResult_item ${
-                selectedIds.includes(index.toString()) ? "selected" : ""
+                selectedIds.includes(item._id) ? "selected" : ""
               } ${
-                correctAnswers && correctAnswers.includes(index.toString())
+                correctAnswerIds && correctAnswerIds?.includes(item._id)
                   ? "correct"
-                  : !equalArrays(correctAnswers as string[], selectedIds) &&
+                  : !_.isEqual(correctAnswerIds as string[], selectedIds) &&
                     "wrong"
               }`}
             >
               <div className="BoxAnswerResult_item-number">{index + 1}</div>
-              <span className="BoxAnswerResult_item-text">{itemMap}</span>
+              <span className="BoxAnswerResult_item-text">{item.text}</span>
             </div>
           );
         })}

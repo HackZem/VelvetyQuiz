@@ -1,0 +1,75 @@
+.loginModal {
+  .loginModal-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.375rem 2rem;
+    padding-bottom: 2.875rem;
+    border-radius: 3.125rem;
+    background-color: #f7f8fd;
+
+    h2 {
+      font-size: 3rem;
+      font-weight: 400;
+    }
+
+    .loginModal-container-inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5625rem;
+      margin: 2.3125rem auto;
+
+      .loginModal-container-inputs__item {
+        width: min-content;
+        gap: 0;
+
+        .input {
+          border-radius: 1.25rem;
+          width: 27rem;
+          height: 3.375rem;
+          border: none;
+          background-color: #dadada;
+          font-size: 1.4rem;
+        }
+
+        h3 {
+          font-size: 1.75rem;
+          font-weight: 400;
+          text-align: start;
+        }
+
+        &.password {
+          position: relative;
+
+          img {
+            position: absolute;
+            right: 4%;
+            top: 3rem;
+            width: 1.5rem;
+          }
+        }
+      }
+    }
+
+    .button {
+      width: 100%;
+      height: 3.75rem;
+    }
+
+    .loginModal-container-registration {
+      margin-top: 0.875rem;
+      text-align: start;
+
+      span {
+        margin-right: 0.125rem;
+      }
+
+      .loginModal-container-registration-link {
+        text-decoration: none;
+        color: #4472c4;
+        cursor: pointer;
+        margin-left: 0.3125rem;
+      }
+    }
+  }
+}

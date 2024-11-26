@@ -1,7 +1,6 @@
 {
   "watch": ["src"],
-  "ext": "ts, js",
-  "execMap": {
-    "ts": "ts-node-esm"
-  }
+  "ext": "ts,js",
+  "ignore": ["dist"],
+  "exec": "tsx ./src/server.ts"
 }

@@ -2,23 +2,24 @@ import "./RadioAnswerResult.scss";
 import "../AnswerResult.scss";
 import Container from "../../../../../../UI/Container/Container";
 import { FC } from "react";
+import { IAnswer } from "../../../../../../models/responses/TestResponse";
 
 interface IRadioAnswerResult {
-  dataAnswers: string[];
+  answers: IAnswer[];
   label: string;
   selectedId: string;
-  correctAnswer: string | undefined;
+  correctAnswerId: string | undefined;
   time: number;
   numberLabel?: number;
 }
 
 const RadioAnswerResult: FC<IRadioAnswerResult> = ({
   label,
-  dataAnswers,
+  answers,
   selectedId,
   time,
   numberLabel,
-  correctAnswer = undefined,
+  correctAnswerId = undefined,
 }) => {
   return (
     <Container className="AnswerResult">
@@ -34,23 +35,20 @@ const RadioAnswerResult: FC<IRadioAnswerResult> = ({
       <hr />
 
       <div className="RadioAnswerResult-items">
-        {dataAnswers.map((item, index) => {
+        {answers.map((item, index) => {
+          let isSelected = item._id === selectedId;
+          let isCorrect = item._id === correctAnswerId;
+
           return (
             <div
               className={`RadioAnswerResult_item ${
-                index === +selectedId ? "selected" : ""
-              } ${
-                correctAnswer && (index === +correctAnswer ? "correct" : "")
-              } ${
-                correctAnswer &&
-                index === +selectedId &&
-                index !== +correctAnswer
-                  ? "wrong"
-                  : ""
+                isSelected ? "selected" : ""
+              } ${correctAnswerId && (isCorrect ? "correct" : "")} ${
+                correctAnswerId && isSelected && !isCorrect ? "wrong" : ""
               }`}
             >
               <div className="RadioAnswerResult_item-number">{index + 1}</div>
-              <span className="RadioAnswerResult_item-text">{item}</span>
+              <span className="RadioAnswerResult_item-text">{item.text}</span>
             </div>
           );
         })}

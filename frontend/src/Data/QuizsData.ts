@@ -1,17 +1,18 @@
 type TStatus = "public" | "privat" | "nocopy";
-export type TDataAnswers = {
+
+export type TDataAnswer = {
   text: string;
   isCorrect: boolean;
   id: string;
-}[];
+};
 
 type TTypeAnswer = "radio" | "box";
 
-export interface IQuestions {
+interface IQuestion {
   text: string;
   scores: number;
   questionType: TTypeAnswer;
-  answers: TDataAnswers;
+  answers: TDataAnswer[];
   id: string;
 }
 
@@ -25,7 +26,7 @@ interface ITestData {
   completed: number;
   id: string;
 
-  questions: IQuestions[];
+  questions: IQuestion[];
 }
 
 const data: ITestData[] = [

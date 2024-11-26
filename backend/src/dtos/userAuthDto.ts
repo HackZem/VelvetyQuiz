@@ -1,18 +1,20 @@
 import { IUser } from "@src/models/UserModel";
-import { HydratedDocument, ObjectId } from "mongoose";
+import mongoose, { HydratedDocument, ObjectId, Types } from "mongoose";
 
 export interface IUserAuthDto {
   email: string;
-  id: ObjectId;
+  id: mongoose.Types.ObjectId;
   isActivated: boolean;
 }
 
-const getDto = (model: HydratedDocument<IUser>) => {
+const getUserAuthDto = (
+  model: IUser & { _id?: Types.ObjectId }
+): IUserAuthDto => {
   return {
     email: model.email,
-    id: model._id,
-    isActivated: model.isActivated,
+    id: model._id!,
+    isActivated: model.isActivated as boolean,
   };
 };
 
-export default getDto;
+export default getUserAuthDto;

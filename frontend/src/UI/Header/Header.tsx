@@ -1,11 +1,13 @@
-import { AiOutlineCaretDown } from "react-icons/ai";
 import "./Header.scss";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { showModal } from "../../redux/slices/modals";
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState<Boolean>(false);
+  const { isAuth } = useAppSelector((state) => state.auth);
+
+  const dispatch = useAppDispatch();
 
   return (
     <header>
@@ -19,7 +21,7 @@ const Header = () => {
           <Button className="header-nav__item">New test</Button>
         </nav>
       </div>
-      {isLogin ? (
+      {isAuth ? (
         <div className="header-avatar">
           <a>
             <img src="/person-svgrepo-com.svg" alt="avatar"></img>
@@ -27,8 +29,18 @@ const Header = () => {
         </div>
       ) : (
         <div className="header-auth">
-          <Button className="header-auth-login">Login</Button>
-          <Button className="header-auth-registration">Registration</Button>
+          <Button
+            className="header-auth-login"
+            onClick={() => dispatch(showModal("loginModal"))}
+          >
+            Login
+          </Button>
+          <Button
+            className="header-auth-registration"
+            onClick={() => dispatch(showModal("registrationModal"))}
+          >
+            Registration
+          </Button>
         </div>
       )}
     </header>

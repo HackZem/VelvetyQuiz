@@ -1,4 +1,5 @@
 import mongoose, { ObjectId } from "mongoose";
+import { IUser } from "./UserModel";
 
 type TStatus = "public" | "privat" | "nocopy";
 
@@ -22,7 +23,7 @@ interface IQuestion {
 export interface ITest {
   name: string;
   description: string;
-  author: ObjectId;
+  author: IUser;
   date: Date;
   subject: string;
   status: TStatus;

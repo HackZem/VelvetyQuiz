@@ -1,9 +1,15 @@
 import Button from "../../UI/Button/Button";
 import Header from "../../UI/Header/Header";
 import LoginModal from "../../components/Auth/LoginModal/LoginModal";
+import RegistrationModal from "../../components/Auth/RegistrationModal/RegistrationModal";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { showModal } from "../../redux/slices/modals";
 import "./MainPage.scss";
 
 const MainPage = () => {
+  const { isAuth } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="mainPage">
       <Header />
@@ -27,16 +33,22 @@ const MainPage = () => {
             </p>
           </div>
         </div>
-        <div className="mainPage-content__item">
-          <div className="mainPage-content__item-info">
-            <h2>Create an account</h2>
-            <p>Create an account and start taking and creating tests.</p>
+        {!isAuth && (
+          <div className="mainPage-content__item">
+            <div className="mainPage-content__item-info">
+              <h2>Create an account</h2>
+              <p>Create an account and start taking and creating tests.</p>
+            </div>
+            <Button
+              className="mainPage-content__item-info-button"
+              onClick={() => dispatch(showModal("registrationModal"))}
+            >
+              Create new account
+            </Button>
           </div>
-          <Button className="mainPage-content__item-info-button">
-            Create new account
-          </Button>
-        </div>
+        )}
       </div>
+      <RegistrationModal />
       <LoginModal />
     </div>
   );

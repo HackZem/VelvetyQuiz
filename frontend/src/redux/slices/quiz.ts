@@ -1,10 +1,13 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import data, { IQuestions } from "../../Data/QuizsData";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import TestService from "../../services/TestService";
+import ITestResponse, { IQuestion } from "../../models/responses/TestResponse";
+
+type TStatus = "loading" | "loaded" | "error";
 
 interface ITestStateSlice {
   currentQuestionNumber: number;
-  status: string;
-  questions: IQuestions[];
+  status: TStatus;
+  questions: IQuestion[];
   selectedAnswers: string[][];
   questionTimes: number[];
 }
@@ -12,43 +15,73 @@ interface ITestStateSlice {
 const initialState: ITestStateSlice = {
   currentQuestionNumber: 0,
   status: "loading",
-  questions: [...data[1].questions],
-
+  questions: [],
   selectedAnswers: [],
-
   questionTimes: [],
 };
+
+export const fetchGetTest = createAsyncThunk<ITestResponse, string>(
+  "tests/fetchGetTest",
+  async (id: string) => {
+    const { data } = await TestService.getTest(id);
+
+    return data;
+  }
+);
 
 const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
     addAnswer: (state, action: PayloadAction<string[]>) => {
-      return {
-        ...state,
-        selectedAnswers: [...state.selectedAnswers, action.payload],
-      };
+      state.selectedAnswers[state.currentQuestionNumber] = action.payload;
+
+      return state;
     },
     nextAnswer: (state) => {
-      return {
-        ...state,
-        currentQuestionNumber: state.currentQuestionNumber + 1,
-      };
+      state.currentQuestionNumber++;
+
+      return state;
     },
     addTime: (state, action: PayloadAction<number>) => {
-      return {
-        ...state,
-        questionTimes: [...state.questionTimes, action.payload],
-      };
+      state.questionTimes[state.currentQuestionNumber] = action.payload;
+
+      return state;
     },
     reset: (state) => {
-      return {
-        ...state,
-        currentQuestionNumber: 0,
-        selectedAnswers: [],
-        questionTimes: [],
-      };
+      state.currentQuestionNumber = 0;
+      state.questionTimes = [];
+      state.selectedAnswers = [];
+
+      return state;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchGetTest.pending, (state) => {
+        state.status = "loading";
+        state.questions = [];
+        state.selectedAnswers = [];
+        state.currentQuestionNumber = 0;
+        state.questionTimes = [];
+      })
+      .addCase(
+        fetchGetTest.fulfilled,
+        (state, action: PayloadAction<ITestResponse>) => {
+          state.status = "loaded";
+          state.questions = action.payload.questions as any;
+          state.selectedAnswers = [];
+          state.currentQuestionNumber = 0;
+          state.questionTimes = [];
+        }
+      )
+      .addCase(fetchGetTest.rejected, (state) => {
+        state.status = "error";
+        state.questions = [];
+        state.selectedAnswers = [];
+        state.currentQuestionNumber = 0;
+        state.questionTimes = [];
+      });
   },
 });
 

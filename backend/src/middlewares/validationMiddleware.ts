@@ -12,7 +12,7 @@ const validationMiddleware =
       await validator.validate(body);
       return next();
     } catch (err) {
-      throw ApiError.BadRequest("Validation is no valid", err);
+      return next(ApiError.BadRequest("Validation is no valid", err));
     }
   };
 

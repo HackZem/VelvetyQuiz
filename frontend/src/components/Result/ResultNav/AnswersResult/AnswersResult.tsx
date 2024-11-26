@@ -20,17 +20,15 @@ const AnswersResult = () => {
               return (
                 <RadioAnswerResult
                   label={item.text}
-                  dataAnswers={item.answers.map((item) => {
-                    return item.text;
-                  })}
+                  answers={item.answers}
                   selectedId={selectedAnswers[index][0]}
                   numberLabel={index + 1}
                   time={_.round(questionTimes[index] / 1000, 2)}
-                  key={item.id}
-                  correctAnswer={
+                  key={item._id}
+                  correctAnswerId={
                     item.answers.find((item) => {
                       return item.isCorrect;
-                    })?.id
+                    })?._id
                   }
                 />
               );
@@ -38,19 +36,17 @@ const AnswersResult = () => {
               return (
                 <BoxAnswerResult
                   label={item.text}
-                  dataAnswers={item.answers.map((item) => {
-                    return item.text;
-                  })}
+                  answers={item.answers}
                   selectedIds={[...selectedAnswers[index]]}
                   numberLabel={index + 1}
                   time={_.round(questionTimes[index] / 1000, 2)}
-                  key={item.id}
-                  correctAnswers={item.answers
+                  key={item._id}
+                  correctAnswerIds={item.answers
                     .filter((itemFilter) => {
                       return itemFilter.isCorrect;
                     })
                     .map((itemMap) => {
-                      return itemMap.id;
+                      return itemMap._id;
                     })}
                 />
               );

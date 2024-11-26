@@ -3,7 +3,7 @@
   text-align: center;
   vertical-align: middle;
   border: none;
-  background: #4472c4;
+  background-color: #4472c4;
   border-radius: 15px;
   color: white;
   cursor: pointer;
@@ -12,9 +12,9 @@
   padding: 10px 15px;
 
   &:hover {
-    background: rgb(48, 68, 125);
+    background-color: rgb(48, 68, 125);
   }
   &:active {
-    background: rgb(25, 39, 78);
+    background-color: rgb(25, 39, 78);
   }
 }

@@ -1,4 +1,6 @@
+import getTestDto, { ITestDto } from "@src/dtos/testDto";
 import TestModel, { ITest } from "@src/models/TestModel";
+import { IUser } from "@src/models/UserModel";
 import { IReq, IRes } from "@src/routes/types/express/misc";
 
 export const getAll = async (_: IReq, res: IRes) => {
@@ -18,7 +20,11 @@ export const getOne = async (req: IReq, res: IRes) => {
   try {
     const id = req.params.id;
 
-    const test = await TestModel.findById(id);
+    const test = await TestModel.findById(id)
+      .populate<{
+        author: IUser;
+      }>("author")
+      .lean();
 
     if (!test) {
       return res.status(404).json({
@@ -26,7 +32,9 @@ export const getOne = async (req: IReq, res: IRes) => {
       });
     }
 
-    res.json(test);
+    const testDto: ITestDto = getTestDto(test);
+
+    res.json(testDto);
   } catch (err) {
     console.log(err);
     res.status(500).json({

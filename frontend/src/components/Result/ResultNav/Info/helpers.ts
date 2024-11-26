@@ -1,14 +1,14 @@
-import { IQuestions } from "../../../../Data/QuizsData";
 import _ from "lodash";
+import { IQuestion } from "../../../../models/responses/TestResponse";
 
 export const getCorrectAnswersCount = (
   answers: string[][],
-  questions: IQuestions[]
+  questions: IQuestion[]
 ) => {
   return questions.reduce((acc, item, index) => {
     const correctAnswersId = item.answers
       .filter((answer) => answer.isCorrect)
-      .map((answer) => answer.id);
+      .map((answer) => answer._id);
 
     if (_.isEqual(correctAnswersId, _.sortBy(answers[index]))) {
       acc++;

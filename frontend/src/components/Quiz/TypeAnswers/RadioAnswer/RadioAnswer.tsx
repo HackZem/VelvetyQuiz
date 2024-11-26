@@ -19,6 +19,7 @@ const RadioAnswer: FC<IRadioAnswerProps> = ({
     <div
       className={`RadioAnswer ${className}`}
       onClick={() => {
+        console.log(id);
         selectedRadioAnswers([id]);
       }}
     >
