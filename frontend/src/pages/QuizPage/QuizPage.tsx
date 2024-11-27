@@ -86,6 +86,8 @@ const QuizPage = () => {
             isLast={
               currentQuestionNumber === questions.length - 1 ? true : false
             }
+            questionCount={questions.length}
+            currentQuestionNumber={currentQuestionNumber}
           />
         </div>
       </div>

@@ -1,20 +1,28 @@
 import { FC } from "react";
 import "./Control.scss";
+import ProgressBar from "../../../UI/ProgressBar/ProgressBar";
 
 interface IControlProps {
   onNext: () => void;
   isDisabledBtn?: boolean;
   isLast?: boolean;
+  questionCount: number;
+  currentQuestionNumber: number;
 }
 
 const Control: FC<IControlProps> = ({
   onNext,
   isDisabledBtn = false,
   isLast = false,
+  questionCount,
+  currentQuestionNumber,
 }) => {
   return (
     <div className="Quiz-control">
-      <div className="Quiz-control_progressBar" />
+      <ProgressBar
+        process={currentQuestionNumber / questionCount}
+        sectionCount={questionCount}
+      />
       <button
         className={`Quiz-control_btn ${isDisabledBtn ? "disabled" : ""}`}
         onClick={onNext}
