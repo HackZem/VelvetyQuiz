@@ -8,6 +8,7 @@
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.5.2",
     "axios": "^1.6.8",
+    "classnames": "^2.5.1",
     "formik": "^2.4.6",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
@@ -51,7 +52,6 @@
   "main": "index.js",
   "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/jest": "^29.5.12",
@@ -63,5 +63,6 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/sass": "^1.45.0",
     "@types/yup": "^0.32.0"
-  }
+  },
+  "description": ""
 }

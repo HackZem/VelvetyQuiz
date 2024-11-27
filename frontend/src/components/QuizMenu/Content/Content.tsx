@@ -17,7 +17,7 @@ const Content = () => {
       <div className="QuizMenu-content-control">
         <button
           className="QuizMenu-content-control__start"
-          onClick={() => navigate("/quiz")}
+          onClick={() => navigate("/quiz/6746ea774f6a2659b497c065")}
         >
           Start Test
         </button>

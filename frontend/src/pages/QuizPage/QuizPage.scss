@@ -14,7 +14,8 @@
 
   .Quiz-body {
     width: 73rem;
-    height: 58rem;
+    height: 95%;
+    max-height: 58rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

@@ -1,5 +1,5 @@
 .Container.AnswerResult {
-  width: 83rem !important;
+  width: 100% !important;
   height: max-content !important;
   min-height: 16rem;
   padding: 2.12rem 1.62rem !important;
@@ -10,6 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     width: 100%;
 
     h3 {

@@ -3,6 +3,10 @@
   gap: 4.2rem;
   justify-content: space-between;
 
+  @media screen and (max-width: 1390px) {
+    flex-direction: column;
+  }
+
   .Result-info-body {
     display: grid;
     grid-auto-flow: column;

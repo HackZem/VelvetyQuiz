@@ -14,7 +14,7 @@ const Control: FC<IControlProps> = ({
 }) => {
   return (
     <div className="Quiz-control">
-      <div className="Quiz-control_bar" />
+      <div className="Quiz-control_progressBar" />
       <button
         className={`Quiz-control_btn ${isDisabledBtn ? "disabled" : ""}`}
         onClick={onNext}

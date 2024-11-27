@@ -2,7 +2,6 @@ import "./BoxAnswerResult.scss";
 import "../AnswerResult.scss";
 import Container from "../../../../../../UI/Container/Container";
 import { FC } from "react";
-import equalArrays from "../../../../../../helpers/equalArrays";
 import { IAnswer } from "../../../../../../models/responses/TestResponse";
 import _ from "lodash";
 
@@ -45,7 +44,11 @@ const BoxAnswerResult: FC<IBoxAnswerResult> = ({
               } ${
                 correctAnswerIds && correctAnswerIds?.includes(item._id)
                   ? "correct"
-                  : !_.isEqual(correctAnswerIds as string[], selectedIds) &&
+                  : !_.isEqual(
+                      _.sortBy(correctAnswerIds as string[]),
+                      _.sortBy(selectedIds)
+                    ) &&
+                    selectedIds.includes(item._id) &&
                     "wrong"
               }`}
             >
