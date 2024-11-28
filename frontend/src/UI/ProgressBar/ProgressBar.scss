@@ -1,7 +1,7 @@
 .ProgressBar {
   display: flex;
   position: relative;
-  border: 1px solid #000;
+  border: 2px solid #000;
   height: 2.5rem;
   flex-grow: 10;
   background: transparent;
@@ -19,7 +19,7 @@
     .ProgressBar-section {
       border: none;
       position: absolute;
-      width: 1px;
+      width: 2px;
       height: 100%;
       background-color: #000;
     }

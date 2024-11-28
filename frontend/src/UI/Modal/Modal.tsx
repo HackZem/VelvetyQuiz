@@ -5,6 +5,7 @@ import { useAppDispatch } from "../../hooks";
 import { hideModals, showModal } from "../../redux/slices/modals";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
+import classNames from "classnames";
 
 interface IProps {
   children?: ReactNode;
@@ -36,7 +37,7 @@ const Modal: FC<IProps> = ({ children, className }) => {
   return createPortal(
     <Provider store={store}>
       <div className="modal-wrapper">
-        <div className={`modal ${className}`}>{children}</div>
+        <div className={classNames("modal", className)}>{children}</div>
         <div className="modal-overlay" onClick={() => dispatch(hideModals())} />
       </div>
     </Provider>,

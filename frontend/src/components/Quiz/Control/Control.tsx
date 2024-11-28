@@ -1,6 +1,7 @@
 import { FC } from "react";
 import "./Control.scss";
 import ProgressBar from "../../../UI/ProgressBar/ProgressBar";
+import Button from "../../../UI/Button/Button";
 
 interface IControlProps {
   onNext: () => void;
@@ -23,12 +24,12 @@ const Control: FC<IControlProps> = ({
         process={currentQuestionNumber / questionCount}
         sectionCount={questionCount}
       />
-      <button
+      <Button
         className={`Quiz-control_btn ${isDisabledBtn ? "disabled" : ""}`}
         onClick={onNext}
       >
         {isLast ? "Finish" : "Next"}
-      </button>
+      </Button>
     </div>
   );
 };

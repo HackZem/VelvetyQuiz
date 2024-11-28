@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useMemo } from "react";
 import "./EllipsePrecision.scss";
 import percentToValueCircle from "../../../../../helpers/percentToValueCircle";
 
@@ -6,6 +6,8 @@ interface IEllipsePrecision {
   score: number;
   maxScore: number;
 }
+
+const animationDuration = "1s";
 
 const EllipsePrecision: FC<IEllipsePrecision> = ({ score, maxScore }) => {
   const percent = useMemo(() => {
@@ -43,7 +45,19 @@ const EllipsePrecision: FC<IEllipsePrecision> = ({ score, maxScore }) => {
         strokeWidth={"1.5rem"}
         strokeDasharray={`${lenghtCircle}rem ${lenghtCircle}rem`}
         strokeDashoffset={lenghtCircle * percentToValueCircle(percent) + "rem"}
-      />
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values={`${lenghtCircle * percentToValueCircle(0)}rem;${
+            lenghtCircle * percentToValueCircle(percent)
+          }rem`}
+          dur={animationDuration}
+          repeatCount={1}
+          keyTimes="0;1"
+          keySplines="0.4 0 0.2 1"
+          calcMode="spline"
+        />
+      </circle>
       <circle
         className="EllipsePrecision-circleProgressBar"
         fill="transparent"
@@ -54,7 +68,19 @@ const EllipsePrecision: FC<IEllipsePrecision> = ({ score, maxScore }) => {
         strokeWidth={"1.5rem"}
         strokeDasharray={`1 ${lenghtCircle}rem`}
         strokeDashoffset={lenghtCircle * percentToValueCircle(percent) + "rem"}
-      />
+      >
+        <animate
+          attributeName="stroke-dashoffset"
+          values={`${lenghtCircle * percentToValueCircle(0)}rem;${
+            lenghtCircle * percentToValueCircle(percent)
+          }rem`}
+          dur={animationDuration}
+          repeatCount={1}
+          keyTimes="0;1"
+          keySplines="0.4 0 0.2 1"
+          calcMode="spline"
+        />
+      </circle>
       <text
         className="EllipsePrecision-circle-percent"
         fontSize={"4rem"}

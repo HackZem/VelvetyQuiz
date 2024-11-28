@@ -1,5 +1,6 @@
 import React, { FC, InputHTMLAttributes } from "react";
 import "./Input.scss";
+import classNames from "classnames";
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
   children?: string;
@@ -13,7 +14,7 @@ const Input: FC<IProps> = ({ children, className, errorMessage, ...rest }) => {
       <input
         {...rest}
         placeholder={children}
-        className={`input ${className}`}
+        className={classNames("input", className)}
       ></input>
       <span className="input_error">
         {errorMessage ? `• ${errorMessage}` : ""}

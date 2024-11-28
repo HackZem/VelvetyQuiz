@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from "react";
 import "./Button.scss";
+import classNames from "classnames";
 
 interface IProps extends React.ComponentPropsWithoutRef<"button"> {
   children?: ReactNode;
@@ -9,7 +10,7 @@ interface IProps extends React.ComponentPropsWithoutRef<"button"> {
 
 const Button: FC<IProps> = ({ children, className, ...props }) => {
   return (
-    <button {...props} className={`button ${className}`}>
+    <button {...props} className={classNames("button", className)}>
       {children}
     </button>
   );

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./ExitBtn.scss";
+import classNames from "classnames";
 
 interface IExitBtn {
   className?: string;
@@ -11,8 +12,8 @@ const ExitBtn: FC<IExitBtn> = ({ className }) => {
       width="114"
       height="114"
       xmlns="http://www.w3.org/2000/svg"
-      className={"ExitBtn" + " " + className}
-      xmlnsXlink="http://www.w3.org/1999/xlink"
+      className={classNames("ExitBtn", className)}
+      xmlnsXlink="http://www.w3.orge/1999/xlink"
       xmlSpace="preserve"
       overflow="hidden"
     >

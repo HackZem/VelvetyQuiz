@@ -26,7 +26,10 @@ const ResultPage = () => {
 
   const points = useMemo(
     () =>
-      (getScores(selectedAnswers, questions) / getMaxScores(questions)) * 12,
+      _.max([
+        (getScores(selectedAnswers, questions) / getMaxScores(questions)) * 12,
+        1,
+      ]) as number,
     [selectedAnswers, questions]
   );
 

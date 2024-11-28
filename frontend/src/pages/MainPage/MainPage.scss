@@ -3,6 +3,35 @@
   flex-direction: column;
   align-items: center;
 
+  .mainPage_pagination {
+    .MuiButtonBase-root {
+      &:hover {
+        background-color: #2f559725;
+      }
+    }
+
+    .MuiPaginationItem-root {
+      font-size: 1.4rem;
+    }
+
+    .MuiPaginationItem-icon {
+      font-size: 2.5rem;
+    }
+
+    .MuiTouchRipple-root {
+      display: none;
+    }
+
+    .Mui-selected {
+      background-color: #2f5597;
+      color: white;
+
+      &:hover {
+        background-color: #2f5597;
+      }
+    }
+  }
+
   .mainPage-content {
     display: flex;
     flex-direction: column;

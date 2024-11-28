@@ -8,12 +8,13 @@
 
   .Quiz-control_btn {
     background: rgb(47, 85, 151);
-    border: 1px solid #000;
     color: #fff;
     border-radius: 10px;
     flex-grow: 2;
     min-height: 2.5rem;
     font-size: 1.3rem;
+    width: auto;
+
     &.disabled {
       background: rgba(59, 97, 163, 0.623);
       color: rgba(255, 255, 255, 0.623);
