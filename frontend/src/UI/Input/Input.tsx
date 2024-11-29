@@ -15,7 +15,7 @@ const Input: FC<IProps> = ({ children, className, errorMessage, ...rest }) => {
         {...rest}
         placeholder={children}
         className={classNames("input", className)}
-      ></input>
+      />
       <span className="input_error">
         {errorMessage ? `• ${errorMessage}` : ""}
       </span>

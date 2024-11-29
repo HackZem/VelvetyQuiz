@@ -17,6 +17,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: rgb(150, 168, 217);
 }
+
+hr {
+  border: 1px black solid;
+}
+
 :has(.modal) {
   overflow: hidden;
 }

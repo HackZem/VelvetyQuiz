@@ -1,0 +1,58 @@
+.SearchQuestion {
+  padding: 1.5rem 1.62rem;
+  padding-bottom: 1rem;
+  height: max-content;
+
+  .SearchQuestion-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      font-size: 2rem;
+      margin: 0;
+      text-align: start;
+    }
+
+    .SearchQuestion-head-total {
+      font-size: 1.25rem;
+
+      span {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .SearchQuestion-body {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+    .SearchQuestion-body-info {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      text-align: start;
+      font-size: 1.2rem;
+
+      ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+
+      .button {
+        font-size: 1.2rem;
+        margin-top: 3rem;
+        padding: 0.625rem 1.5rem;
+        width: auto;
+      }
+    }
+
+    .SearchQuestion-body-date {
+      display: flex;
+      align-items: end;
+    }
+  }
+}

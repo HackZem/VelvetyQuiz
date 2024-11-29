@@ -3,7 +3,7 @@ import "./Container.scss";
 import classNames from "classnames";
 
 interface IContainerProps {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
 }
 

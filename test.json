@@ -3,7 +3,7 @@
   "description": "The test characteristics define the structure of the test, the time allotted for its execution, the types of tasks included in the test, the scheme for calculating test points and the approximate distribution of tasks according to the sections / subsections of the Independent Testing Program are given.",
   "author": "HackZem",
   "date": "2024-01-05",
-  "subject": "Just",
+  "topic": "Just",
   "status": "public",
   "completed": 0,
 

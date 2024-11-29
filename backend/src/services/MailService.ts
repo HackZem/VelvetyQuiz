@@ -16,7 +16,7 @@ export const sendActivationMail = async (email: string, link: string) => {
   await transporter.sendMail({
     from: process.env.SMTP_USER,
     to: email,
-    subject: "Account activation on VelvetyQuiz",
+    topic: "Account activation on VelvetyQuiz",
     text: "",
     html: `
       <div>

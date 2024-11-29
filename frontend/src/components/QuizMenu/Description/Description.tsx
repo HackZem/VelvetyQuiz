@@ -3,21 +3,21 @@ import "./Description.scss";
 const Description = () => {
   return (
     <ul className="QuizMenu-description">
-      <ol>
+      <li>
         Author: <span>Tyhon</span>
-      </ol>
-      <ol>
+      </li>
+      <li>
         Created: <span>08.11.2023</span>
-      </ol>
-      <ol>
-        Subject: <span>Math, 10 class</span>
-      </ol>
-      <ol>
+      </li>
+      <li>
+        Topic: <span>Math, 10 class</span>
+      </li>
+      <li>
         Status: <span>Public</span>
-      </ol>
-      <ol>
+      </li>
+      <li>
         Completed: <span>10</span>
-      </ol>
+      </li>
     </ul>
   );
 };

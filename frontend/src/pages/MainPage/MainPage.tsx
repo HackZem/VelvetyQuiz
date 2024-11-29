@@ -1,76 +1,23 @@
 import { Pagination, PaginationItem } from "@mui/material";
-import Button from "../../UI/Button/Button";
 import Header from "../../UI/Header/Header";
 import LoginModal from "../../components/Auth/LoginModal/LoginModal";
 import RegistrationModal from "../../components/Auth/RegistrationModal/RegistrationModal";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { showModal } from "../../redux/slices/modals";
 import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
 import "./MainPage.scss";
+import Landing from "../../components/Main/Landing/Landing";
+import QuizSearch from "../../components/Main/QuizSearch/QuizSearch";
 
 const MainPage = () => {
   const { isAuth } = useAppSelector((state) => state.auth);
-  const dispatch = useAppDispatch();
 
   return (
     <div className="mainPage">
       <Header />
-      {isAuth ? (
-        <Pagination
-          count={20}
-          className="mainPage_pagination"
-          showLastButton
-          showFirstButton
-          size="large"
-          renderItem={(item) => (
-            <PaginationItem
-              slots={{
-                last: MdKeyboardDoubleArrowRight,
-                first: MdKeyboardDoubleArrowLeft,
-              }}
-              {...item}
-            />
-          )}
-        />
-      ) : (
-        <div className="mainPage-content">
-          <div className="mainPage-content__item">
-            <div className="mainPage-content__item-info">
-              <h2>Pass the tests</h2>
-              <p>
-                You can take any test created by others. Test your skills or
-                knowledge with a simple test. Prepare for school or work
-                assessments with a straightforward test.
-              </p>
-            </div>
-          </div>
-          <div className="mainPage-content__item">
-            <div className="mainPage-content__item-info">
-              <h2>Create a new test</h2>
-              <p>
-                You can create any test very easily and quickly. By publishing
-                your test, you enable other people to take it.
-              </p>
-            </div>
-          </div>
-
-          <div className="mainPage-content__item">
-            <div className="mainPage-content__item-info">
-              <h2>Create an account</h2>
-              <p>Create an account and start taking and creating tests.</p>
-            </div>
-            <Button
-              className="mainPage-content__item-info-button"
-              onClick={() => dispatch(showModal("registrationModal"))}
-            >
-              Create new account
-            </Button>
-          </div>
-        </div>
-      )}
+      {isAuth ? <QuizSearch /> : <Landing />}
       <RegistrationModal />
       <LoginModal />
     </div>

@@ -24,7 +24,7 @@ export default interface ITestResponse {
   description: string;
   author: UserModel;
   date: Date;
-  subject: string;
+  topic: string;
   status: TStatus;
   completed: number;
   _id: string;

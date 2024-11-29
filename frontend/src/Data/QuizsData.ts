@@ -21,7 +21,7 @@ interface ITestData {
   description: string;
   author: string;
   date: Date;
-  subject: string;
+  topic: string;
   status: TStatus;
   completed: number;
   id: string;
@@ -36,7 +36,7 @@ const data: ITestData[] = [
       "The test characteristics define the structure of the test, the time allotted for its execution, the types of tasks included in the test, the scheme for calculating test points and the approximate distribution of tasks according to the sections / subsections of the Independent Testing Program are given.",
     author: "Anonim",
     date: new Date("2022-03-25"),
-    subject: "Test",
+    topic: "Test",
     status: "public",
     completed: 10,
     id: "0",
@@ -85,7 +85,7 @@ const data: ITestData[] = [
       "The test characteristics define the structure of the test, the time allotted for its execution, the types of tasks included in the test, the scheme for calculating test points and the approximate distribution of tasks according to the sections / subsections of the Independent Testing Program are given.",
     author: "HackZem",
     date: new Date("2024-01-05"),
-    subject: "Just",
+    topic: "Just",
     status: "public",
     completed: 0,
     id: "1",
@@ -237,7 +237,6 @@ const data: ITestData[] = [
       },
     ],
   },
-  
 ];
 
 export default data;

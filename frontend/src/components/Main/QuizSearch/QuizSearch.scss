@@ -1,0 +1,67 @@
+.QuizSearch {
+  max-width: 62.5rem;
+  width: 100%;
+  padding: 1rem;
+
+  .QuizSearch-search {
+    height: 6.5rem;
+
+    .QuizSearch-search-inputWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input {
+        margin: 0;
+        padding-left: 2.5rem;
+        background-color: #dadada;
+
+        &:focus {
+          background-color: white;
+        }
+      }
+
+      #searchIcon {
+        position: absolute;
+        color: #2f5597;
+        font-size: 1.7rem;
+        left: 10px;
+      }
+    }
+  }
+
+  .QuizSearch-content {
+    margin-top: 1rem;
+    .QuizSearch-content-tests {
+    }
+  }
+
+  .QuizSearch_pagination {
+    .MuiButtonBase-root {
+      &:hover {
+        background-color: #2f559725;
+      }
+    }
+
+    .MuiPaginationItem-root {
+      font-size: 1rem;
+    }
+
+    .MuiPaginationItem-icon {
+      font-size: 2rem;
+    }
+
+    .MuiTouchRipple-root {
+      display: none;
+    }
+
+    .Mui-selected {
+      background-color: #2f5597;
+      color: white;
+
+      &:hover {
+        background-color: #2f5597;
+      }
+    }
+  }
+}
