@@ -24,7 +24,6 @@ export interface ITest {
   name: string;
   description: string;
   author: IUser;
-  date: Date;
   topic: string;
   status: TStatus;
   completed: number;
@@ -42,10 +41,6 @@ const TestSchema = new mongoose.Schema<ITest>(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
-    },
-    date: {
-      type: Date,
       required: true,
     },
     topic: {

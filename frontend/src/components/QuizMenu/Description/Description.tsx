@@ -3,7 +3,7 @@ import "./Description.scss";
 
 interface IDescriptionProps {
   author: string;
-  createdAt: Date;
+  createdAt: string;
   topic: string;
   status: string;
   complated: number;
@@ -21,7 +21,9 @@ const Description: FC<IDescriptionProps> = ({
       <li>
         Author: <span>{author}</span>
       </li>
-      <li>{/* Created: <span>{createdAt.getTime()}</span> */}</li>
+      <li>
+        Created: <span>{new Date(createdAt).toLocaleDateString()}</span>
+      </li>
       <li>
         Topic: <span>{topic}</span>
       </li>

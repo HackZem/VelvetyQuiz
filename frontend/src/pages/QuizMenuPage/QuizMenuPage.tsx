@@ -11,15 +11,14 @@ import ITestResponse from "../../models/responses/TestResponse";
 const QuizMenuPage = () => {
   const { id } = useParams();
   const [
-    { name, description, author, topic, status, completed, date },
+    { name, description, author, topic, status, completed, createdAt },
     setTest,
-  ] = useState<ITestResponse | any>({});
+  ] = useState<ITestResponse>({} as ITestResponse);
 
   useEffect(() => {
     const fetchTests = async () => {
       try {
         const { data } = await TestService.getTest(id!);
-        console.log(data);
         setTest(data);
       } catch (err) {
         console.log(err);
@@ -35,7 +34,7 @@ const QuizMenuPage = () => {
         <Content title={name} description={description} testId={id!} />
         <Description
           author={author?.username}
-          createdAt={date}
+          createdAt={createdAt}
           topic={topic}
           status={status}
           complated={completed}

@@ -15,7 +15,7 @@ const SearchQuestions: FC<ISearchQuestionsProps> = ({ tests }) => {
           title={item.name}
           topic={item.topic}
           author={item.author.username}
-          date={item.date}
+          createdAt={item.createdAt}
           questionCount={item.questions.length}
           testId={item._id}
         />

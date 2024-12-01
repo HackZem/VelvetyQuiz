@@ -23,7 +23,7 @@ const QuizSearch = () => {
   useEffect(() => {
     const fetchTests = async () => {
       try {
-        const { data } = await TestService.getTests(page, 10, search);
+        const { data } = await TestService.getTests(page, 5, search);
 
         setTests(data.tests);
         setPage(data.page);

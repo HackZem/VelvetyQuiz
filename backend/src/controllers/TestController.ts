@@ -33,13 +33,16 @@ export const getAll = async (
     const tests = await TestModel.find(filter)
       .skip(skip)
       .limit(limit)
-      .populate<{ author: IUser }>("author");
+      .populate<{ author: IUser }>("author")
+      .lean();
+
+    const dtoTests = tests.map((item) => getTestDto(item));
 
     res.json({
       maxPages,
       page,
       testCount: tests.length,
-      tests,
+      tests: dtoTests,
     });
   } catch (err) {
     next(err);

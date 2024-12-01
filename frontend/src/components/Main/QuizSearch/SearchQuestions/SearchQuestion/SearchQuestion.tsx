@@ -8,14 +8,14 @@ interface ISearchQuestionProps {
   title: string;
   topic: string;
   author: string;
-  date: Date;
+  createdAt: string;
   questionCount: number;
   testId: string;
 }
 
 const SearchQuestion: FC<ISearchQuestionProps> = ({
   author,
-  date,
+  createdAt,
   title,
   questionCount,
   topic,
@@ -46,10 +46,12 @@ const SearchQuestion: FC<ISearchQuestionProps> = ({
               navigate(`/quiz/menu/${testId}`);
             }}
           >
-            Learn more
+            Open
           </Button>
         </div>
-        {/* <span className="SearchQuestion-body-date">{date.toDateString()}</span> */}
+        <span className="SearchQuestion-body-date">
+          {new Date(createdAt).toLocaleDateString()}
+        </span>
       </div>
     </Container>
   );
