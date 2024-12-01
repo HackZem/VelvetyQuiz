@@ -1,23 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import "./Content.scss";
+import { FC } from "react";
 
-const Content = () => {
+interface IContentProps {
+  title: string;
+  description: string;
+  testId: string;
+}
+
+const Content: FC<IContentProps> = ({ title, description, testId }) => {
   const navigate = useNavigate();
   return (
     <div className="QuizMenu-content">
       <div className="QuizMenu-content-texts">
-        <h1>КР Фізика 9 класу Електроенергія</h1>
-        <p>
-          У характеристиці тесту визначено структуру тесту, час, відведений на
-          його виконання, подано типи завдань, уміщених до тесту, наведено схему
-          нарахування тестових балів та зазначено орієнтовний розподіл завдань
-          відповідно до розділів / підрозділів Програми незалежного тестування.
-        </p>
+        <h1>{title}</h1>
+        <p>{description}</p>
       </div>
       <div className="QuizMenu-content-control">
         <button
           className="QuizMenu-content-control__start"
-          onClick={() => navigate("/quiz/6746ea774f6a2659b497c065")}
+          onClick={() => navigate(`/quiz/${testId}`)}
         >
           Start Test
         </button>

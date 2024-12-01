@@ -2,26 +2,31 @@ import { FC } from "react";
 import Container from "../../../../../UI/Container/Container";
 import "./SearchQuestion.scss";
 import Button from "../../../../../UI/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 interface ISearchQuestionProps {
-  label: string;
+  title: string;
   topic: string;
   author: string;
   date: Date;
   questionCount: number;
+  testId: string;
 }
 
 const SearchQuestion: FC<ISearchQuestionProps> = ({
   author,
   date,
-  label,
+  title,
   questionCount,
   topic,
+  testId,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <Container className="SearchQuestion">
       <div className="SearchQuestion-head">
-        <h3>{label}</h3>
+        <h3>{title}</h3>
         <div className="SearchQuestion-head-total">
           Total questions:
           <span>{questionCount}</span>
@@ -32,11 +37,19 @@ const SearchQuestion: FC<ISearchQuestionProps> = ({
         <div className="SearchQuestion-body-info">
           <ul>
             <li className="SearchQuestion-body-info-topic">{topic}</li>
-            <li className="SearchQuestion-body-info-author">{author}</li>
+            <li className="SearchQuestion-body-info-author">
+              <a href="">{author}</a>
+            </li>
           </ul>
-          <Button>Learn more</Button>
+          <Button
+            onClick={() => {
+              navigate(`/quiz/menu/${testId}`);
+            }}
+          >
+            Learn more
+          </Button>
         </div>
-        <span className="SearchQuestion-body-date">{date.toDateString()}</span>
+        {/* <span className="SearchQuestion-body-date">{date.toDateString()}</span> */}
       </div>
     </Container>
   );

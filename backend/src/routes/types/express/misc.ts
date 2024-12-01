@@ -1,4 +1,5 @@
 import * as e from "express";
+import { ParsedQs } from "qs";
 
 // **** Express **** //
 

@@ -6,21 +6,49 @@ import {
 import "./QuizSearch.scss";
 import Input from "../../../UI/Input/Input";
 import { FiSearch } from "react-icons/fi";
-import SearchQuestion from "./SearchQuestions/SearchQuestion/SearchQuestion";
+import SearchQuestions from "./SearchQuestions/SearchQuestions";
+import { useEffect, useState } from "react";
+import ITestResponse from "../../../models/responses/TestResponse";
+import TestService from "../../../services/TestService";
+import useDebounce from "../../../hooks/useDebounce";
 
 const QuizSearch = () => {
+  const [tests, setTests] = useState<ITestResponse[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [maxPages, setMaxPages] = useState<number>(1);
+  const [search, setSearch] = useState<string>("");
+
+  const debounceSearch = useDebounce(search, 500);
+
+  useEffect(() => {
+    const fetchTests = async () => {
+      try {
+        const { data } = await TestService.getTests(page, 10, search);
+
+        setTests(data.tests);
+        setPage(data.page);
+        setMaxPages(data.maxPages);
+      } catch (err) {
+        setTests([]);
+      }
+    };
+    fetchTests();
+  }, [page, debounceSearch]);
+
   return (
     <div className="QuizSearch">
       <div className="QuizSearch-search">
         <div className="QuizSearch-search-inputWrapper">
           <FiSearch id="searchIcon" />
-          <Input />
+          <Input onChange={(e) => setSearch(e.target.value)} />
         </div>
       </div>
       <hr />
       <div className="QuizSearch-content">
         <Pagination
-          count={20}
+          count={maxPages}
+          key={maxPages}
+          onChange={(_, page) => setPage(page)}
           className="QuizSearch_pagination"
           showLastButton
           showFirstButton
@@ -34,15 +62,7 @@ const QuizSearch = () => {
             />
           )}
         />
-        <div className="QuizSearch-content-tests">
-          <SearchQuestion
-            label={"ChanChinChanTest"}
-            topic={"Chinesis"}
-            author={"Author Chan"}
-            date={new Date("2024-01-01")}
-            questionCount={0}
-          />
-        </div>
+        <SearchQuestions tests={tests} />
       </div>
     </div>
   );

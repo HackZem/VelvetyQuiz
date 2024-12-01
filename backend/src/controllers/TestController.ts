@@ -1,18 +1,48 @@
 import getTestDto, { ITestDto } from "@src/dtos/testDto";
+import { ApiError } from "@src/exceptions/ApiError";
 import TestModel, { ITest } from "@src/models/TestModel";
 import { IUser } from "@src/models/UserModel";
-import { IReq, IRes } from "@src/routes/types/express/misc";
+import { IReqQuery, IReq, IRes } from "@src/routes/types/types";
 
-export const getAll = async (_: IReq, res: IRes) => {
+export const getAll = async (
+  req: IReqQuery<{ page: string; limit: string; search: string }>,
+  res: IRes,
+  next: any
+) => {
   try {
-    const tests = await TestModel.find();
+    let page = +req.query.page || 1;
+    const limit = +req.query.limit || 10;
 
-    res.json(tests);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: "Failed to get all tests",
+    const search = req.query.search;
+    const filter = search ? { name: { $regex: search, $options: "i" } } : {};
+
+    const totalQuiz = await TestModel.countDocuments(filter);
+
+    if (!totalQuiz) {
+      throw ApiError.NotFound("Not found");
+    }
+
+    const maxPages = Math.ceil(totalQuiz / limit);
+
+    if (page > maxPages) {
+      page = maxPages;
+    }
+
+    const skip = (page - 1) * limit;
+
+    const tests = await TestModel.find(filter)
+      .skip(skip)
+      .limit(limit)
+      .populate<{ author: IUser }>("author");
+
+    res.json({
+      maxPages,
+      page,
+      testCount: tests.length,
+      tests,
     });
+  } catch (err) {
+    next(err);
   }
 };
 

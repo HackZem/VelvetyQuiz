@@ -26,10 +26,8 @@ const ResultPage = () => {
 
   const points = useMemo(
     () =>
-      _.max([
-        (getScores(selectedAnswers, questions) / getMaxScores(questions)) * 12,
-        1,
-      ]) as number,
+      (getScores(selectedAnswers, questions) / getMaxScores(questions)) * 12,
+
     [selectedAnswers, questions]
   );
 
@@ -50,7 +48,7 @@ const ResultPage = () => {
             <Container>
               <div className="Result-head-info_rating-text">
                 <span>
-                  {_.round(points)}
+                  {_.max([_.round(points), 1]) as number}
                   /12
                 </span>
                 points

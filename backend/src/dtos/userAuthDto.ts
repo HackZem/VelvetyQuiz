@@ -5,6 +5,7 @@ export interface IUserAuthDto {
   email: string;
   id: mongoose.Types.ObjectId;
   isActivated: boolean;
+  username: string;
 }
 
 const getUserAuthDto = (
@@ -14,6 +15,7 @@ const getUserAuthDto = (
     email: model.email,
     id: model._id!,
     isActivated: model.isActivated as boolean,
+    username: model.username,
   };
 };
 

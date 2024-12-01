@@ -1,22 +1,35 @@
+import { FC } from "react";
 import "./Description.scss";
 
-const Description = () => {
+interface IDescriptionProps {
+  author: string;
+  createdAt: Date;
+  topic: string;
+  status: string;
+  complated: number;
+}
+
+const Description: FC<IDescriptionProps> = ({
+  author,
+  complated,
+  createdAt,
+  status,
+  topic,
+}) => {
   return (
     <ul className="QuizMenu-description">
       <li>
-        Author: <span>Tyhon</span>
+        Author: <span>{author}</span>
+      </li>
+      <li>{/* Created: <span>{createdAt.getTime()}</span> */}</li>
+      <li>
+        Topic: <span>{topic}</span>
       </li>
       <li>
-        Created: <span>08.11.2023</span>
+        Status: <span>{status}</span>
       </li>
       <li>
-        Topic: <span>Math, 10 class</span>
-      </li>
-      <li>
-        Status: <span>Public</span>
-      </li>
-      <li>
-        Completed: <span>10</span>
+        Completed: <span>{complated}</span>
       </li>
     </ul>
   );
