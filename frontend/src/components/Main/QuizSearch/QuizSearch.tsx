@@ -16,14 +16,14 @@ const QuizSearch = () => {
   const [tests, setTests] = useState<ITestResponse[]>([]);
   const [page, setPage] = useState<number>(1);
   const [maxPages, setMaxPages] = useState<number>(1);
-  const [search, setSearch] = useState<string>("");
+  const [query, setQuery] = useState<string>("");
 
-  const debounceSearch = useDebounce(search, 500);
+  const debounceSearch = useDebounce(query, 500);
 
   useEffect(() => {
     const fetchTests = async () => {
       try {
-        const { data } = await TestService.getTests(page, 5, search);
+        const { data } = await TestService.getTests(page, 5, query);
 
         setTests(data.tests);
         setPage(data.page);
@@ -40,7 +40,7 @@ const QuizSearch = () => {
       <div className="QuizSearch-search">
         <div className="QuizSearch-search-inputWrapper">
           <FiSearch id="searchIcon" />
-          <Input onChange={(e) => setSearch(e.target.value)} />
+          <Input onChange={(e) => setQuery(e.target.value)} />
         </div>
       </div>
       <hr />

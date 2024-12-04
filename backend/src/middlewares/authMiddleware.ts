@@ -6,7 +6,7 @@ import { NextFunction } from "express";
 
 type TAuthMiddleware = (req: IReq | any, res: IRes, next: NextFunction) => void;
 
-const authMiddleware: TAuthMiddleware = (req, res, next) => {
+const authMiddleware: TAuthMiddleware = (req, _, next) => {
   try {
     const authorizationHeader = req.headers.authorization;
     if (!authorizationHeader) return next(ApiError.UnauthorizedError());

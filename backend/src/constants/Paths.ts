@@ -26,5 +26,6 @@ export default {
     Create: "/",
     Remove: "/:id",
     Edit: "/:id",
+    FindByTest: "/find/:testId",
   },
 } as const;

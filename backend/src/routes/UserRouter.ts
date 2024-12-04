@@ -19,9 +19,9 @@ const router = Router();
 
 router.get(Paths.Users.GetMe, authMiddleware, getMe);
 
-router.patch(Paths.Users.Update, updateOne);
+router.patch(Paths.Users.Update, authMiddleware, updateOne);
 
-router.delete(Paths.Users.Delete, deleteOne);
+router.delete(Paths.Users.Delete, authMiddleware, deleteOne);
 
 router.post(
   Paths.Users.Auth.Register,

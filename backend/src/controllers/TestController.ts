@@ -5,7 +5,7 @@ import { IUser } from "@src/models/UserModel";
 import { IReqQuery, IReq, IRes } from "@src/routes/types/types";
 
 export const getAll = async (
-  req: IReqQuery<{ page: string; limit: string; search: string }>,
+  req: IReqQuery<{ page: string; limit: string; text: string }>,
   res: IRes,
   next: any
 ) => {
@@ -13,7 +13,7 @@ export const getAll = async (
     let page = +req.query.page || 1;
     const limit = +req.query.limit || 10;
 
-    const search = req.query.search;
+    const search = req.query.text;
     const filter = search ? { name: { $regex: search, $options: "i" } } : {};
 
     const totalQuiz = await TestModel.countDocuments(filter);

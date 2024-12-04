@@ -13,13 +13,13 @@ export default class TestService {
   public static async getTests(
     page: number,
     limit: number,
-    search: string
+    text: string
   ): Promise<AxiosResponse<IPaginationTestResponse>> {
     return testApi.get("tests", {
       params: {
         page,
         limit,
-        search,
+        text,
       },
     });
   }

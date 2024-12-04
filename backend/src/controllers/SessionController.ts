@@ -1,5 +1,8 @@
+import { ApiError } from "@src/exceptions/ApiError";
 import SessionModel, { ISession } from "@src/models/SessionModel";
-import { IReq, IRes } from "@src/routes/types/types";
+import { IReq, IReqQuery, IRes } from "@src/routes/types/types";
+import { NextFunction } from "express";
+import { ObjectId } from "mongoose";
 
 export const addOne = async (req: IReq<ISession>, res: IRes) => {
   try {
@@ -61,5 +64,24 @@ export const editOne = async (req: IReq<ISession>, res: IRes) => {
     res.status(500).json({
       message: "Failed to update session",
     });
+  }
+};
+
+export const findByTest = async (req: IReq, res: IRes, next: any) => {
+  try {
+    const testId = req.params.testId;
+    const userId = req.user!.id;
+
+    const session = await SessionModel.findOne({ test: testId, user: userId });
+
+    if (!session) {
+      throw ApiError.NotFound("Session not found");
+    }
+
+    res.json({
+      currentQuestionNumber: session?.currentQuestionNumber,
+    });
+  } catch (err) {
+    next(err);
   }
 };

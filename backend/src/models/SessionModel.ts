@@ -1,8 +1,8 @@
-import mongoose, { ObjectId } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 export interface ISession {
-  test: ObjectId;
-  user: ObjectId;
+  test: Schema.Types.ObjectId;
+  user: Schema.Types.ObjectId;
   currentQuestionNumber: number;
   selectedAnswers: string[][];
   questionTimes: number[];

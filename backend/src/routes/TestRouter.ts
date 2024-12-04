@@ -6,18 +6,19 @@ import {
   getOne,
   removeOne,
 } from "@src/controllers/TestController";
+import authMiddleware from "@src/middlewares/authMiddleware";
 import { Router } from "express";
 
 const router = Router();
 
-router.get(Paths.Tests.GetAll, getAll);
+router.get(Paths.Tests.GetAll, authMiddleware, getAll);
 
-router.get(Paths.Tests.GetOne, getOne);
+router.get(Paths.Tests.GetOne, authMiddleware, getOne);
 
-router.post(Paths.Tests.Create, addOne);
+router.post(Paths.Tests.Create, authMiddleware, addOne);
 
-router.delete(Paths.Tests.Remove, removeOne);
+router.delete(Paths.Tests.Remove, authMiddleware, removeOne);
 
-router.patch(Paths.Tests.Edit, editOne);
+router.patch(Paths.Tests.Edit, authMiddleware, editOne);
 
 export default router;
