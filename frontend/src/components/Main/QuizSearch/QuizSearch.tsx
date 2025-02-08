@@ -18,8 +18,8 @@ const QuizSearch = () => {
   const [maxPages, setMaxPages] = useState<number>(1);
   const [query, setQuery] = useState<string>("");
 
-  const debounceSearch = useDebounce(query, 500);
-
+  const debounceQuery = useDebounce(query, 500);
+  
   useEffect(() => {
     const fetchTests = async () => {
       try {
@@ -33,7 +33,7 @@ const QuizSearch = () => {
       }
     };
     fetchTests();
-  }, [page, debounceSearch]);
+  }, [page, debounceQuery]);
 
   return (
     <div className="QuizSearch">

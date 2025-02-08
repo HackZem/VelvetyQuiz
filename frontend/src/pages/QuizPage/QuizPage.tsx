@@ -9,7 +9,7 @@ import {
   addAnswer,
   addTime,
   fetchGetTest,
-  nextAnswer,
+  nextQuestion,
 } from "../../redux/slices/quiz";
 import Control from "../../components/Quiz/Control/Control";
 import { useNavigate, useParams } from "react-router-dom";
@@ -51,7 +51,7 @@ const QuizPage = () => {
     setSelectedAnswersId([]);
 
     if (currentQuestionNumber !== questions.length - 1) {
-      dispatch(nextAnswer());
+      dispatch(nextQuestion());
       updateTime();
     } else {
       navigate("/quiz/result");

@@ -18,4 +18,6 @@ router.patch(Paths.Sessions.Edit, editOne);
 
 router.get(Paths.Sessions.FindByTest, authMiddleware, findByTest);
 
+router.get(Paths.Sessions.GetOne, authMiddleware, findByTest);
+
 export default router;

@@ -1,5 +1,7 @@
 import { ApiError } from "@src/exceptions/ApiError";
 import SessionModel, { ISession } from "@src/models/SessionModel";
+import { ITest } from "@src/models/TestModel";
+import { IUser } from "@src/models/UserModel";
 import { IReq, IReqQuery, IRes } from "@src/routes/types/types";
 import { NextFunction } from "express";
 import { ObjectId } from "mongoose";
@@ -81,6 +83,24 @@ export const findByTest = async (req: IReq, res: IRes, next: any) => {
     res.json({
       currentQuestionNumber: session?.currentQuestionNumber,
     });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getOne = async (req: IReq, res: IRes, next: any) => {
+  try {
+    const id = req.params.id;
+
+    const session = await SessionModel.findById(id).populate<{ user: IUser }>(
+      "test"
+    );
+
+    if (!session) {
+      throw ApiError.NotFound("Session not found");
+    }
+    //TODO add populate for user, test and dto for this
+    res.json(session);
   } catch (err) {
     next(err);
   }

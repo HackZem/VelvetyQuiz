@@ -27,5 +27,6 @@ export default {
     Remove: "/:id",
     Edit: "/:id",
     FindByTest: "/find/:testId",
+    GetOne: "/:id",
   },
 } as const;

@@ -17,7 +17,7 @@ const Content: FC<IContentProps> = ({ title, description, testId }) => {
       const info = await SessionService.findSessionByTest(testId);
       console.log(info, "info");
     } catch (err: any) {
-      if (err.response.status === 404) {
+      if (err.response && err.response.status === 404) {
         navigate(`/quiz/${testId}`);
       }
     }

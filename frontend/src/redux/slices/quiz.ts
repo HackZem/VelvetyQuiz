@@ -38,7 +38,7 @@ const quizSlice = createSlice({
 
       return state;
     },
-    nextAnswer: (state) => {
+    nextQuestion: (state) => {
       state.currentQuestionNumber++;
 
       return state;
@@ -85,5 +85,5 @@ const quizSlice = createSlice({
   },
 });
 
-export const { addAnswer, nextAnswer, reset, addTime } = quizSlice.actions;
+export const { addAnswer, nextQuestion, reset, addTime } = quizSlice.actions;
 export const quizReducer = quizSlice.reducer;
